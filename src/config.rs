@@ -4,75 +4,75 @@ use std::fs::File;
 use regex::Regex;
 
 #[derive(Deserialize, Debug)]
-struct Feedback {
+pub struct Feedback {
     /// The amount to shift the value to the left before adding.
-    shift: u32,
+    pub shift: u32,
     /// The stream this feedback is applied to.
-    segment: usize,
+    pub segment: usize,
     /// The index of the base value to alter.
-    index: usize,
+    pub index: usize,
 }
 
 #[derive(Deserialize, Debug)]
-struct Capture {
+pub struct Capture {
     /// The base the number is to be interpreted as.
-    base: u32,
+    pub base: u32,
     /// All the places the value is inserted in this ruling.
-    feedbacks: Vec<Feedback>,
+    pub feedbacks: Vec<Feedback>,
 }
 
 #[derive(Deserialize, Debug)]
-struct Rule {
+pub struct Rule {
     /// The regex including captures for this rule.
     regex_string: String,
     #[serde(skip_deserializing)]
-    regex: Option<Regex>,
+    pub regex: Option<Regex>,
     /// The unmodified values to be inserted in order into each segment of the output.
-    segment_values: Vec<Vec<u64>>,
+    pub segment_values: Vec<Vec<u64>>,
     /// Capture structs for handling each capture group.
-    captures: Vec<Capture>,
+    pub captures: Vec<Capture>,
 }
 
 #[derive(Deserialize, Debug)]
-struct TagCreateRule {
+pub struct TagCreateRule {
     /// The regex which should have exactly one capture group for the tag.
     regex_string: String,
     #[serde(skip_deserializing)]
-    regex: Option<Regex>,
+    pub regex: Option<Regex>,
 }
 
 #[derive(Deserialize, Debug)]
-struct TagUseFeedback {
+pub struct TagUseFeedback {
     /// The segment to add the feedback to.
-    add_segment: usize,
+    pub add_segment: usize,
     /// Whether or not to use relative position.
-    relative: bool,
+    pub relative: bool,
     /// The segment to get the position from to add.
-    pos_segment: usize,
+    pub pos_segment: usize,
     /// An offset to add to the position.
-    pos_offset: u64,
+    pub pos_offset: u64,
 }
 
 #[derive(Deserialize, Debug)]
-struct TagUseRule {
+pub struct TagUseRule {
     /// The regex which should have exactly one capture group for the tag.
     regex_string: String,
     #[serde(skip_deserializing)]
-    regex: Option<Regex>,
+    pub regex: Option<Regex>,
     /// Feedback of the tag's data into the segments.
-    feedbacks: Vec<TagUseFeedback>,
+    pub feedbacks: Vec<TagUseFeedback>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
     /// The widths of each output segment.
-    segment_widths: Vec<u32>,
+    pub segment_widths: Vec<u32>,
     /// The rule for creating tags.
-    tag_create: TagCreateRule,
+    pub tag_create: TagCreateRule,
     /// The rule for using tags.
-    tag_use_rules: Vec<TagUseRule>,
+    pub tag_use_rules: Vec<TagUseRule>,
     /// The rules for everything else.
-    rules: Vec<Rule>,
+    pub rules: Vec<Rule>,
 }
 
 impl Config {
