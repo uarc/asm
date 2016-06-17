@@ -49,19 +49,29 @@ struct TagUseFeedback {
     relative: bool,
     /// The segment to get the position from to add.
     pos_segment: usize,
+    /// An offset to add to the position.
+    pos_offset: u64,
 }
 
 #[derive(Deserialize, Debug)]
 struct TagUseRule {
+    /// The regex which should have exactly one capture group for the tag.
     regex_string: String,
     #[serde(skip_deserializing)]
     regex: Option<Regex>,
-    captures: Vec<Vec<TagUseFeedback>>,
+    /// Feedback of the tag's data into the segments.
+    feedbacks: Vec<TagUseFeedback>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
+    /// The widths of each output segment.
     segment_widths: Vec<u32>,
+    /// The rule for creating tags.
+    tag_create: TagCreateRule,
+    /// The rule for using tags.
+    tag_use: TagUseRule,
+    /// The rules for everything else.
     rules: Vec<Rule>,
 }
 
@@ -79,6 +89,24 @@ impl Config {
     }
 
     pub fn consistency_check(&mut self) {
+        self.tag_create.regex = Some(Regex::new(&self.tag_create.regex_string)
+            .unwrap_or_else(|e| panic!("Error: Failed to parse tag create regex: {}", e)));
+        if self.tag_create.regex.as_ref().unwrap().captures_len() != 2 {
+            panic!("Error: The tag create regex must always have one capture group for the tag.");
+        }
+        self.tag_use.regex = Some(Regex::new(&self.tag_use.regex_string)
+            .unwrap_or_else(|e| panic!("Error: Failed to parse tag use regex: {}", e)));
+        if self.tag_use.regex.as_ref().unwrap().captures_len() != 2 {
+            panic!("Error: The tag use regex must always have one capture group for the tag.");
+        }
+        for feedback in &self.tag_use.feedbacks {
+            if feedback.add_segment >= self.segment_widths.len() {
+                panic!("Error: A feedback in the tag use struct uses a non-existent add segment.");
+            }
+            if feedback.pos_segment >= self.segment_widths.len() {
+                panic!("Error: A feedback in the tag use struct uses a non-existent pos segment.");
+            }
+        }
         for rule in &mut self.rules {
             let segment_counts = rule.segment_values.iter().map(|v| v.len()).collect_vec();
             if segment_counts.len() != self.segment_widths.len() {
