@@ -1,0 +1,21 @@
+{
+  "segment_widths": [8, 32],
+  "rules": [
+    {
+      "regex_string": "rread([0-3])",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "base": 10,
+          "feedbacks": [
+            {
+              "shift": 0,
+              "segment": 0,
+              "index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
