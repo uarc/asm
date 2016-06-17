@@ -3,6 +3,7 @@
 extern crate serde_json;
 extern crate itertools;
 extern crate clap;
+extern crate regex;
 
 use clap::{App, Arg};
 mod config;
