@@ -11,6 +11,10 @@ pub struct Feedback {
     pub segment: usize,
     /// The index of the base value to alter.
     pub index: usize,
+    /// If this should perform an immediate fill of the amount specified instead of feeding it back.
+    pub fill: bool,
+    /// The offset of the fill amount.
+    pub fill_offset: isize,
 }
 
 #[derive(Deserialize, Debug)]
@@ -50,7 +54,7 @@ pub struct TagUseFeedback {
     /// The segment to get the position from to add.
     pub pos_segment: usize,
     /// An offset to add to the position.
-    pub pos_offset: u64,
+    pub pos_offset: isize,
 }
 
 #[derive(Deserialize, Debug)]
@@ -66,7 +70,9 @@ pub struct TagUseRule {
 #[derive(Deserialize, Debug)]
 pub struct Config {
     /// The widths of each output segment.
-    pub segment_widths: Vec<u32>,
+    pub segment_widths: Vec<usize>,
+    /// If the regexes are on a word basis
+    pub split_whitespace: bool,
     /// The rule for creating tags.
     pub tag_create: TagCreateRule,
     /// The rule for using tags.
@@ -89,6 +95,11 @@ impl Config {
     }
 
     pub fn consistency_check(&mut self) {
+        for width in &self.segment_widths {
+            if *width == 0 {
+                panic!("Error: A segment width of 0 is not allowed.");
+            }
+        }
         self.tag_create.regex = Some(Regex::new(&self.tag_create.regex_string)
             .unwrap_or_else(|e| panic!("Error: Failed to parse tag create regex: {}", e)));
         if self.tag_create.regex.as_ref().unwrap().captures_len() != 2 {

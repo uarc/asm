@@ -8,6 +8,8 @@ extern crate regex;
 use clap::{App, Arg};
 mod config;
 use config::Config;
+mod parse;
+use parse::Parser;
 
 #[derive(Debug)]
 enum OutputFormat {

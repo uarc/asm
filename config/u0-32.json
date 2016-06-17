@@ -1,5 +1,6 @@
 {
-  "segment_widths": [8, 32],
+  "segment_widths": [1, 4],
+  "split_whitespace": true,
   "tag_create": {"regex_string": ":(.*)"},
   "tag_use_rules": [
     {
@@ -36,7 +37,9 @@
             {
               "shift": 0,
               "segment": 0,
-              "index": 0
+              "index": 0,
+              "fill": false,
+              "fill_offset": 0
             }
           ]
         }
