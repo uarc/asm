@@ -1,10 +1,30 @@
 {
   "segment_widths": [8, 32],
   "tag_create": {"regex_string": ":(.*)"},
-  "tag_use": {
-    "regex_string": "\\.(.*)",
-    "feedbacks": []
-  },
+  "tag_use_rules": [
+    {
+      "regex_string": "\\.(.*)",
+      "feedbacks": [
+        {
+          "add_segment": 1,
+          "relative": false,
+          "pos_segment": 0,
+          "pos_offset": 0
+        }
+      ]
+    },
+    {
+      "regex_string": "\\$(.*)",
+      "feedbacks": [
+        {
+          "add_segment": 1,
+          "relative": false,
+          "pos_segment": 1,
+          "pos_offset": 0
+        }
+      ]
+    }
+  ],
   "rules": [
     {
       "regex_string": "rread([0-3])",

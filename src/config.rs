@@ -70,7 +70,7 @@ pub struct Config {
     /// The rule for creating tags.
     tag_create: TagCreateRule,
     /// The rule for using tags.
-    tag_use: TagUseRule,
+    tag_use_rules: Vec<TagUseRule>,
     /// The rules for everything else.
     rules: Vec<Rule>,
 }
@@ -94,17 +94,28 @@ impl Config {
         if self.tag_create.regex.as_ref().unwrap().captures_len() != 2 {
             panic!("Error: The tag create regex must always have one capture group for the tag.");
         }
-        self.tag_use.regex = Some(Regex::new(&self.tag_use.regex_string)
-            .unwrap_or_else(|e| panic!("Error: Failed to parse tag use regex: {}", e)));
-        if self.tag_use.regex.as_ref().unwrap().captures_len() != 2 {
-            panic!("Error: The tag use regex must always have one capture group for the tag.");
-        }
-        for feedback in &self.tag_use.feedbacks {
-            if feedback.add_segment >= self.segment_widths.len() {
-                panic!("Error: A feedback in the tag use struct uses a non-existent add segment.");
+        for tag_use in &mut self.tag_use_rules {
+            tag_use.regex = Some(Regex::new(&tag_use.regex_string).unwrap_or_else(|e| {
+                panic!("Error: Failed to parse tag use regex \"{}\": {}",
+                       tag_use.regex_string,
+                       e)
+            }));
+            if tag_use.regex.as_ref().unwrap().captures_len() != 2 {
+                panic!("Error: The tag use regex \"{}\" must always have one capture group for \
+                        the tag.",
+                       tag_use.regex_string);
             }
-            if feedback.pos_segment >= self.segment_widths.len() {
-                panic!("Error: A feedback in the tag use struct uses a non-existent pos segment.");
+            for feedback in &tag_use.feedbacks {
+                if feedback.add_segment >= self.segment_widths.len() {
+                    panic!("Error: A feedback in the tag use \"{}\" struct uses a non-existent \
+                            add segment.",
+                           tag_use.regex_string);
+                }
+                if feedback.pos_segment >= self.segment_widths.len() {
+                    panic!("Error: A feedback in the tag use \"{}\" struct uses a non-existent \
+                            pos segment.",
+                           tag_use.regex_string);
+                }
             }
         }
         for rule in &mut self.rules {
