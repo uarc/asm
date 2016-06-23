@@ -1,7 +1,6 @@
 use super::config::Config;
 use std::collections::BTreeMap;
 use std::io::{BufRead, Write};
-use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy)]
 pub enum OutputFormat {
@@ -36,7 +35,13 @@ impl<'a> Parser<'a> {
     pub fn new(config: &'a Config) -> Self {
         Parser {
             config: config,
-            segments: Vec::new(),
+            segments: {
+                let mut v = Vec::new();
+                for _ in 0..config.segment_widths.len() {
+                    v.push(Vec::new());
+                }
+                v
+            },
             tags: BTreeMap::new(),
             replacements: Vec::new(),
         }
@@ -146,7 +151,7 @@ impl<'a> Parser<'a> {
                              self.segments
                                  .iter()
                                  .map(|v| v.len())
-                                 .collect_vec());
+                                 .collect());
             true
         } else {
             false
@@ -158,6 +163,7 @@ impl<'a> Parser<'a> {
         for rule in &config.tag_use_rules {
             if let Some(caps) = rule.regex.as_ref().unwrap().captures(segment) {
                 let tag = caps.at(1).unwrap().to_string();
+                println!("Captured segment \"{}\" in rule \"{:?}\"", segment, rule);
                 for feedback in &rule.feedbacks {
                     let index = self.segments[feedback.add_segment].len();
                     let current_pos_index = self.segments[feedback.pos_segment].len();

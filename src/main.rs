@@ -67,6 +67,9 @@ fn main() {
             .unwrap_or_else(|e| panic!("Error: Failed to open input file \"{}\": {}", name, e))));
     }
 
+    // Link the program.
+    parser.link();
+
     let outputs =
         matches.values_of("outputs").map(|iter| iter.collect()).unwrap_or_else(|| Vec::new());
     for (i, name) in (0..config.segment_widths.len())
@@ -85,9 +88,8 @@ fn main() {
         .enumerate() {
         parser.output(format,
                       i,
-                      &mut File::open(&name).unwrap_or_else(|e| {
+                      &mut File::create(&name).unwrap_or_else(|e| {
                           panic!("Error: Failed to open output file \"{}\": {}", name, e)
                       }));
     }
-    parser.link();
 }
