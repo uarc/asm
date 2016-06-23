@@ -111,13 +111,13 @@ impl<'a> Parser<'a> {
             OutputFormat::HexList => {
                 use std::iter::FromIterator;
                 // Allocate enough bytes to store a u64
-                let mut bytes = [0; 8];
+                let mut bytes = [0u8; 8];
                 let width = self.config.segment_widths[segment];
                 for val in &self.segments[segment] {
                     BigEndian::write_u64(&mut bytes, *val);
                     w.write_all(&(String::from_iter(bytes[(8 - width)..8]
                                 .iter()
-                                .map(|&b| format!("{:X}", b))) +
+                                .map(|&b| format!("{:02X}", b))) +
                                      "\n")
                             .as_bytes())
                         .unwrap_or_else(|e| {
