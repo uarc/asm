@@ -4,19 +4,19 @@ extern crate serde_json;
 extern crate itertools;
 extern crate clap;
 extern crate regex;
+extern crate byteorder;
+extern crate rustc_serialize;
 
 use clap::{App, Arg};
+use itertools::{Itertools, EitherOrBoth};
+
 mod config;
 use config::Config;
 mod parse;
-use parse::Parser;
+use parse::{Parser, OutputFormat};
 
-#[derive(Debug)]
-enum OutputFormat {
-    LittleEndian,
-    BigEndian,
-    HexList,
-}
+use std::io::BufReader;
+use std::fs::File;
 
 fn main() {
     let matches = App::new("uarc-asm")
@@ -39,7 +39,9 @@ fn main() {
         .arg(Arg::with_name("outputs")
             .long("outputs")
             .short("o")
-            .help("List of the output file names"))
+            .multiple(true)
+            .number_of_values(1)
+            .help("Output file names in order (one at a time)"))
         .arg(Arg::with_name("inputs")
             .index(1)
             .multiple(true)
@@ -54,8 +56,38 @@ fn main() {
     };
 
     let config_filename = matches.value_of("config").unwrap();
+    let config = Config::new_from_filename(config_filename);
 
-    println!("Format: {:?}, Config: {:?}",
-             format,
-             Config::new_from_filename(config_filename));
+    let mut parser = Parser::new(&config);
+
+    for name in matches.values_of("inputs")
+        .map(|iter| iter.collect())
+        .unwrap_or_else(|| Vec::new()) {
+        parser.parse(BufReader::new(File::open(&name)
+            .unwrap_or_else(|e| panic!("Error: Failed to open input file \"{}\": {}", name, e))));
+    }
+
+    let outputs =
+        matches.values_of("outputs").map(|iter| iter.collect()).unwrap_or_else(|| Vec::new());
+    for (i, name) in (0..config.segment_widths.len())
+        .zip_longest(outputs)
+        .map(|v| {
+            match v {
+                EitherOrBoth::Both(_, specified) => specified.into(),
+                EitherOrBoth::Left(n) => format!("oseg{}", n),
+                EitherOrBoth::Right(specified) => {
+                    panic!("Error: Output \"{}\" goes past the amount of segments for this \
+                            architecture.",
+                           specified);
+                }
+            }
+        })
+        .enumerate() {
+        parser.output(format,
+                      i,
+                      &mut File::open(&name).unwrap_or_else(|e| {
+                          panic!("Error: Failed to open output file \"{}\": {}", name, e)
+                      }));
+    }
+    parser.link();
 }

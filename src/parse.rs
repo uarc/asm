@@ -1,9 +1,18 @@
 use super::config::Config;
 use std::collections::BTreeMap;
-use std::io::BufRead;
+use std::io::{BufRead, Write};
 use itertools::Itertools;
 
+#[derive(Debug, Clone, Copy)]
+pub enum OutputFormat {
+    LittleEndian,
+    BigEndian,
+    HexList,
+}
+
 struct Replacement {
+    // Line for purposes of printing errors.
+    line: usize,
     // Segment to add the value to.
     add_segment: usize,
     // The index in the add_segment to add the value.
@@ -32,15 +41,20 @@ impl<'a> Parser<'a> {
             replacements: Vec::new(),
         }
     }
-/*
+
     pub fn link(&mut self) {
         // Iterate through every replacement.
         for r in &self.replacements {
             // Get the tag offset vector corresponding to the replacement.
-            let tag = self.tags.get(&r.tag);
-            self.segments[r.add_segment][r.index] = (tag[r.pos_segment] as isize + r.pos_offset) as u64;
+            let tag = self.tags.get(&r.tag).unwrap_or_else(|| {
+                panic!("Error: Tag \"{}\" used on line {} never defined.",
+                       r.tag,
+                       r.line);
+            });
+            self.segments[r.add_segment][r.index] =
+                (tag[r.pos_segment] as isize + r.pos_offset) as u64;
         }
-    }*/
+    }
 
     pub fn parse<B>(&mut self, bufread: B)
         where B: BufRead
@@ -58,11 +72,64 @@ impl<'a> Parser<'a> {
         }
     }
 
+    pub fn output<W>(&self, format: OutputFormat, segment: usize, w: &mut W)
+        where W: Write
+    {
+        use byteorder::{ByteOrder, LittleEndian, BigEndian};
+        match format {
+            OutputFormat::LittleEndian => {
+                // Allocate enough bytes to store a u64
+                let mut bytes = [0; 8];
+                let width = self.config.segment_widths[segment];
+                for val in &self.segments[segment] {
+                    LittleEndian::write_u64(&mut bytes, *val);
+                    w.write_all(&bytes[0..width]).unwrap_or_else(|e| {
+                        panic!("Error: Writing to output file for segment {} failed: {}",
+                               segment,
+                               e);
+                    });
+                }
+            }
+            OutputFormat::BigEndian => {
+                // Allocate enough bytes to store a u64
+                let mut bytes = [0; 8];
+                let width = self.config.segment_widths[segment];
+                for val in &self.segments[segment] {
+                    BigEndian::write_u64(&mut bytes, *val);
+                    w.write_all(&bytes[0..width]).unwrap_or_else(|e| {
+                        panic!("Error: Writing to output file for segment {} failed: {}",
+                               segment,
+                               e);
+                    });
+                }
+            }
+            OutputFormat::HexList => {
+                use std::iter::FromIterator;
+                // Allocate enough bytes to store a u64
+                let mut bytes = [0; 8];
+                let width = self.config.segment_widths[segment];
+                for val in &self.segments[segment] {
+                    BigEndian::write_u64(&mut bytes, *val);
+                    w.write_all(&(String::from_iter(bytes[(8 - width)..8]
+                                .iter()
+                                .map(|&b| format!("{:X}", b))) +
+                                     "\n")
+                            .as_bytes())
+                        .unwrap_or_else(|e| {
+                            panic!("Error: Writing to output file for segment {} failed: {}",
+                                   segment,
+                                   e);
+                        });
+                }
+            }
+        }
+    }
+
     pub fn parse_segment(&mut self, segment: &str, line: usize) {
         if self.attempt_tag_create(segment) {
             return;
         }
-        if self.attempt_tag_use(segment) {
+        if self.attempt_tag_use(segment, line) {
             return;
         }
         if self.attempt_rules(segment) {
@@ -75,7 +142,6 @@ impl<'a> Parser<'a> {
 
     fn attempt_tag_create(&mut self, segment: &str) -> bool {
         if let Some(caps) = self.config.tag_create.regex.as_ref().unwrap().captures(segment) {
-            let config = &self.config;
             self.tags.insert(caps.at(1).unwrap().to_string(),
                              self.segments
                                  .iter()
@@ -87,7 +153,7 @@ impl<'a> Parser<'a> {
         }
     }
 
-    fn attempt_tag_use(&mut self, segment: &str) -> bool {
+    fn attempt_tag_use(&mut self, segment: &str, line: usize) -> bool {
         let config = &self.config;
         for rule in &config.tag_use_rules {
             if let Some(caps) = rule.regex.as_ref().unwrap().captures(segment) {
@@ -96,6 +162,7 @@ impl<'a> Parser<'a> {
                     let index = self.segments[feedback.add_segment].len();
                     let current_pos_index = self.segments[feedback.pos_segment].len();
                     self.replacements.push(Replacement {
+                        line: line,
                         add_segment: feedback.add_segment,
                         index: index,
                         tag: tag.clone(),

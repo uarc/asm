@@ -69,7 +69,7 @@ pub struct TagUseRule {
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
-    /// The widths of each output segment.
+    /// The widths of each output segment in octets.
     pub segment_widths: Vec<usize>,
     /// If the regexes are on a word basis
     pub split_whitespace: bool,
