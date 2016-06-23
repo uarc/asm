@@ -4,10 +4,15 @@ use std::io::BufRead;
 use itertools::Itertools;
 
 struct Replacement {
+    // Segment to add the value to.
     add_segment: usize,
+    // The index in the add_segment to add the value.
     index: usize,
+    // The tag to retrieve the position to add.
     tag: String,
+    // The segment for which we are retrieving the position from the tag.
     pos_segment: usize,
+    // The offset we add after retrieving the value from the tag.
     pos_offset: isize,
 }
 
@@ -27,6 +32,15 @@ impl<'a> Parser<'a> {
             replacements: Vec::new(),
         }
     }
+/*
+    pub fn link(&mut self) {
+        // Iterate through every replacement.
+        for r in &self.replacements {
+            // Get the tag offset vector corresponding to the replacement.
+            let tag = self.tags.get(&r.tag);
+            self.segments[r.add_segment][r.index] = (tag[r.pos_segment] as isize + r.pos_offset) as u64;
+        }
+    }*/
 
     pub fn parse<B>(&mut self, bufread: B)
         where B: BufRead
