@@ -67,6 +67,9 @@ impl<'a> Parser<'a> {
         for (index, line) in bufread.lines().enumerate() {
             let line = line.unwrap_or_else(|e| panic!("Error: Failed to read from buffer: {}", e));
 
+            // Remove everything after the first #, which denotes a comment.
+            let line = line.splitn(2, '#').next().unwrap();
+
             if self.config.split_whitespace {
                 for word in line.split_whitespace() {
                     self.parse_segment(word, index + 1);
@@ -131,6 +134,9 @@ impl<'a> Parser<'a> {
     }
 
     pub fn parse_segment(&mut self, segment: &str, line: usize) {
+        if segment.is_empty() {
+            return;
+        }
         if self.attempt_tag_create(segment) {
             return;
         }
