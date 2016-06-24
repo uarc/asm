@@ -43,6 +43,90 @@
         }
       ]
     }, {
+      "regex_string": "add([0-3])",
+      "segment_values": [[4],[]],
+      "captures": [
+        {
+          "base": 10,
+          "feedbacks": [
+            {
+              "shift": 0,
+              "segment": 0,
+              "index": 0,
+              "fill": false,
+              "fill_offset": 0
+            }
+          ]
+        }
+      ]
+    }, {
+      "regex_string": "\\+1",
+      "segment_values": [[8],[]],
+      "captures": []
+    }, {
+      "regex_string": "\\-1",
+      "segment_values": [[9],[]],
+      "captures": []
+    }, {
+      "regex_string": "\\+0b([0-1]+)",
+      "segment_values": [[4],[0]],
+      "captures": [
+        {
+          "base": 2,
+          "feedbacks": [
+            {
+              "shift": 0,
+              "segment": 1,
+              "index": 0,
+              "fill": false,
+              "fill_offset": 0
+            }
+          ]
+        }
+      ]
+    }, {
+      "regex_string": "\\+0x([0-9A-F]+)",
+      "segment_values": [[4],[0]],
+      "captures": [
+        {
+          "base": 16,
+          "feedbacks": [
+            {
+              "shift": 0,
+              "segment": 1,
+              "index": 0,
+              "fill": false,
+              "fill_offset": 0
+            }
+          ]
+        }
+      ]
+    }, {
+      "regex_string": "\\+([0-9]+)",
+      "segment_values": [[4],[0]],
+      "captures": [
+        {
+          "base": 10,
+          "feedbacks": [
+            {
+              "shift": 0,
+              "segment": 1,
+              "index": 0,
+              "fill": false,
+              "fill_offset": 0
+            }
+          ]
+        }
+      ]
+    }, {
+      "regex_string": "\\+\\+",
+      "segment_values": [[8],[]],
+      "captures": []
+    }, {
+      "regex_string": "\\-\\-",
+      "segment_values": [[9],[]],
+      "captures": []
+    }, {
       "regex_string": "0b([0-1]+)",
       "segment_values": [[],[0]],
       "captures": [
