@@ -2,48 +2,62 @@
   "segment_widths": [1, 4],
   "split_whitespace": true,
   "tag_create": {"regex_string": "^:(.*)$"},
-  "tag_use_rules": [
+  "rules": [
     {
       "regex_string": "^\\.(.*)$",
-      "feedbacks": [
+      "segment_values": [[],[0]],
+      "captures": [
         {
-          "add_segment": 1,
-          "relative": false,
-          "pos_segment": 0,
-          "pos_offset": 0
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
         }
       ]
     }, {
       "regex_string": "^\\$(.*)$",
-      "feedbacks": [
+      "segment_values": [[],[0]],
+      "captures": [
         {
-          "add_segment": 1,
-          "relative": false,
-          "pos_segment": 1,
-          "pos_offset": 0
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
         }
       ]
-    }
-  ], "rules": [
-    {
+    }, {
       "regex_string": "^fill:0b([0-9]+),0b([0-9]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -51,20 +65,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -72,20 +90,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -93,20 +115,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -114,20 +140,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -135,20 +165,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -156,20 +190,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -177,20 +215,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -198,20 +240,24 @@
       "segment_values": [[],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }, {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1,
-              "fill": true
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1,
+                "fill": true
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -219,10 +265,12 @@
       "segment_values": [[0],[]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {}
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
         }
       ]
     }, {
@@ -230,10 +278,12 @@
       "segment_values": [[4],[]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {}
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
         }
       ]
     }, {
@@ -249,12 +299,14 @@
       "segment_values": [[4],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -262,12 +314,14 @@
       "segment_values": [[4],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -275,12 +329,14 @@
       "segment_values": [[4],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -288,13 +344,15 @@
       "segment_values": [[4],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "negate": true,
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -302,13 +360,15 @@
       "segment_values": [[4],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "negate": true,
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -316,13 +376,15 @@
       "segment_values": [[4],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "negate": true,
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -334,17 +396,59 @@
       "segment_values": [[9],[]],
       "captures": []
     }, {
+      "regex_string": "^carry$",
+      "segment_values": [[10],[]],
+      "captures": []
+    }, {
+      "regex_string": "^borrow$",
+      "segment_values": [[11],[]],
+      "captures": []
+    }, {
+      "regex_string": "^~$",
+      "segment_values": [[12],[]],
+      "captures": []
+    }, {
+      "regex_string": "^break$",
+      "segment_values": [[13],[]],
+      "captures": []
+    }, {
+      "regex_string": "^reads$",
+      "segment_values": [[14],[]],
+      "captures": []
+    }, {
+      "regex_string": "^return$",
+      "segment_values": [[15],[]],
+      "captures": []
+    }, {
+      "regex_string": "^continue$",
+      "segment_values": [[16],[]],
+      "captures": []
+    }, {
+      "regex_string": "^ien$",
+      "segment_values": [[17],[]],
+      "captures": []
+    }, {
+      "regex_string": "^recv$",
+      "segment_values": [[18],[]],
+      "captures": []
+    }, {
+      "regex_string": "^ld0i$",
+      "segment_values": [[19],[]],
+      "captures": []
+    }, {
       "regex_string": "^-0b([0-1]+)$",
       "segment_values": [[48],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "negate": true,
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -352,13 +456,15 @@
       "segment_values": [[48],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "negate": true,
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -366,13 +472,15 @@
       "segment_values": [[48],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "negate": true,
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -380,12 +488,14 @@
       "segment_values": [[48],[0]],
       "captures": [
         {
-          "base": 2,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -393,12 +503,14 @@
       "segment_values": [[48],[0]],
       "captures": [
         {
-          "base": 16,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }, {
@@ -406,12 +518,14 @@
       "segment_values": [[48],[0]],
       "captures": [
         {
-          "base": 10,
-          "feedbacks": [
-            {
-              "segment": 1
-            }
-          ]
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
         }
       ]
     }
