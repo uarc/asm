@@ -3,19 +3,50 @@ use itertools::Itertools;
 use std::fs::File;
 use regex::Regex;
 
+fn feedback_default_negate() -> bool {
+    false
+}
+
+fn feedback_default_shift() -> u32 {
+    0
+}
+
+fn feedback_default_segment() -> usize {
+    0
+}
+
+fn feedback_default_index() -> usize {
+    0
+}
+
+fn feedback_default_fill() -> bool {
+    false
+}
+
+// Default is -1 so that the number specified copies the number this many times and inserts it.
+fn feedback_default_fill_offset() -> isize {
+    -1
+}
+
 #[derive(Deserialize, Debug)]
 pub struct Feedback {
     /// Should this be negated before using it?
+    #[serde(default="feedback_default_negate")]
     pub negate: bool,
     /// The amount to shift the value to the left before adding.
+    #[serde(default="feedback_default_shift")]
     pub shift: u32,
     /// The stream this feedback is applied to.
+    #[serde(default="feedback_default_segment")]
     pub segment: usize,
     /// The index of the base value to alter.
+    #[serde(default="feedback_default_index")]
     pub index: usize,
     /// If this should perform an immediate fill of the amount specified instead of feeding it back.
+    #[serde(default="feedback_default_fill")]
     pub fill: bool,
     /// The offset of the fill amount.
+    #[serde(default="feedback_default_fill_offset")]
     pub fill_offset: isize,
 }
 

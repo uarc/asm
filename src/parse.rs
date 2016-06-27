@@ -169,7 +169,6 @@ impl<'a> Parser<'a> {
         for rule in &config.tag_use_rules {
             if let Some(caps) = rule.regex.as_ref().unwrap().captures(segment) {
                 let tag = caps.at(1).unwrap().to_string();
-                println!("Captured segment \"{}\" in rule \"{:?}\"", segment, rule);
                 for feedback in &rule.feedbacks {
                     let index = self.segments[feedback.add_segment].len();
                     let current_pos_index = self.segments[feedback.pos_segment].len();
@@ -217,9 +216,14 @@ impl<'a> Parser<'a> {
                             shiftval = !shiftval + 1;
                         }
                         if feedback.fill {
-                            let baseval = segvals[feedback.segment][index];
-                            for _ in 0..(shiftval + feedback.fill_offset as u64) {
-                                self.segments[feedback.segment].push(baseval);
+                            let baseval = segvals[feedback.segment][feedback.index];
+                            let fill_amount = shiftval as isize + feedback.fill_offset;
+                            if fill_amount.is_negative() {
+                                panic!("Error: Got a negative fill amount!");
+                            } else {
+                                for _ in 0..fill_amount {
+                                    self.segments[feedback.segment].push(baseval);
+                                }
                             }
                         } else {
                             segvals[feedback.segment][index] += shiftval;
