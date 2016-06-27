@@ -212,7 +212,10 @@ impl<'a> Parser<'a> {
                     let val: u64 = unsafe { transmute(pval) };
 
                     for feedback in &capture.feedbacks {
-                        let shiftval = val << feedback.shift;
+                        let mut shiftval = val << feedback.shift;
+                        if feedback.negate {
+                            shiftval = !shiftval + 1;
+                        }
                         if feedback.fill {
                             let baseval = segvals[feedback.segment][index];
                             for _ in 0..(shiftval + feedback.fill_offset as u64) {

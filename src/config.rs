@@ -5,6 +5,8 @@ use regex::Regex;
 
 #[derive(Deserialize, Debug)]
 pub struct Feedback {
+    /// Should this be negated before using it?
+    pub negate: bool,
     /// The amount to shift the value to the left before adding.
     pub shift: u32,
     /// The stream this feedback is applied to.
