@@ -652,6 +652,78 @@
         }
       ]
     }, {
+      "regex_string": "^cv([0-9A-Fa-f])$",
+      "segment_values": [[32],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^read([0-3])$",
+      "segment_values": [[48],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^get([0-3])$",
+      "segment_values": [[52],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i([0-3])$",
+      "segment_values": [[56],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^0$",
+      "segment_values": [[60],[]],
+      "captures": []
+    }, {
+      "regex_string": "^rot0$",
+      "segment_values": [[],[]],
+      "captures": []
+    }, {
+      "regex_string": "^copy0$",
+      "segment_values": [[61],[]],
+      "captures": []
+    }, {
+      "regex_string": "^getp$",
+      "segment_values": [[62],[]],
+      "captures": []
+    }, {
+      "regex_string": "^geta$",
+      "segment_values": [[63],[]],
+      "captures": []
+    }, {
       "regex_string": "^i:-0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
