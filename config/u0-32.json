@@ -912,6 +912,174 @@
       "segment_values": [[101],[]],
       "captures": []
     }, {
+      "regex_string": "^==$",
+      "segment_values": [[102],[]],
+      "captures": []
+    }, {
+      "regex_string": "^==:(.*)$",
+      "segment_values": [[102],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^!=$",
+      "segment_values": [[103],[]],
+      "captures": []
+    }, {
+      "regex_string": "^!=:(.*)$",
+      "segment_values": [[103],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<$",
+      "segment_values": [[104],[]],
+      "captures": []
+    }, {
+      "regex_string": "^<:(.*)$",
+      "segment_values": [[104],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<=$",
+      "segment_values": [[105],[]],
+      "captures": []
+    }, {
+      "regex_string": "^<=:(.*)$",
+      "segment_values": [[105],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<u$",
+      "segment_values": [[106],[]],
+      "captures": []
+    }, {
+      "regex_string": "^<u:(.*)$",
+      "segment_values": [[106],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<=u$",
+      "segment_values": [[107],[]],
+      "captures": []
+    }, {
+      "regex_string": "^<=u:(.*)$",
+      "segment_values": [[107],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^in$",
+      "segment_values": [[108],[]],
+      "captures": []
+    }, {
+      "regex_string": "^out$",
+      "segment_values": [[109],[]],
+      "captures": []
+    }, {
+      "regex_string": "^incept$",
+      "segment_values": [[110],[]],
+      "captures": []
+    }, {
+      "regex_string": "^set$",
+      "segment_values": [[111],[]],
+      "captures": []
+    }, {
+      "regex_string": "^sel$",
+      "segment_values": [[112],[]],
+      "captures": []
+    }, {
+      "regex_string": "^seta$",
+      "segment_values": [[113],[]],
+      "captures": []
+    }, {
+      "regex_string": "^loop$",
+      "segment_values": [[114],[]],
+      "captures": []
+    }, {
+      "regex_string": "^sef$",
+      "segment_values": [[115],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\*$",
+      "segment_values": [[116],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\*u$",
+      "segment_values": [[117],[]],
+      "captures": []
+    }, {
+      "regex_string": "^/$",
+      "segment_values": [[118],[]],
+      "captures": []
+    }, {
+      "regex_string": "^/u$",
+      "segment_values": [[119],[]],
+      "captures": []
+    }, {
       "regex_string": "^i:-0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
