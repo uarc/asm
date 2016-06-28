@@ -23,6 +23,10 @@ fn feedback_default_fill() -> bool {
     false
 }
 
+fn feedback_default_align() -> bool {
+    false
+}
+
 // Default is -1 so that the number specified copies the number this many times and inserts it.
 fn feedback_default_fill_offset() -> isize {
     -1
@@ -45,6 +49,9 @@ pub struct NumFeedback {
     /// If this should perform an immediate fill of the amount specified instead of feeding it back.
     #[serde(default="feedback_default_fill")]
     pub fill: bool,
+    /// If this is a fill, are we aligning to a location?
+    #[serde(default="feedback_default_align")]
+    pub align: bool,
     /// The offset of the fill amount.
     #[serde(default="feedback_default_fill_offset")]
     pub fill_offset: isize,
@@ -153,30 +160,7 @@ impl Config {
         if self.tag_create.regex.as_ref().unwrap().captures_len() != 2 {
             panic!("Error: The tag create regex must always have one capture group for the tag.");
         }
-        // for tag_use in &mut self.tag_use_rules {
-        // tag_use.regex = Some(Regex::new(&tag_use.regex_string).unwrap_or_else(|e| {
-        // panic!("Error: Failed to parse tag use regex \"{}\": {}",
-        // tag_use.regex_string,
-        // e)
-        // }));
-        // if tag_use.regex.as_ref().unwrap().captures_len() != 2 {
-        // panic!("Error: The tag use regex \"{}\" must always have one capture group for \
-        // the tag.",
-        // tag_use.regex_string);
-        // }
-        // for feedback in &tag_use.feedbacks {
-        // if feedback.add_segment >= self.segment_widths.len() {
-        // panic!("Error: A feedback in the tag use \"{}\" struct uses a non-existent \
-        // add segment.",
-        // tag_use.regex_string);
-        // }
-        // if feedback.pos_segment >= self.segment_widths.len() {
-        // panic!("Error: A feedback in the tag use \"{}\" struct uses a non-existent \
-        // pos segment.",
-        // tag_use.regex_string);
-        // }
-        // }
-        // }
+
         for rule in &mut self.rules {
             let segment_counts = rule.segment_values.iter().map(|v| v.len()).collect_vec();
             if segment_counts.len() != self.segment_widths.len() {

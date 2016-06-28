@@ -214,8 +214,15 @@ impl<'a> Parser<'a> {
                                     if fill_amount.is_negative() {
                                         panic!("Error: Got a negative fill amount!");
                                     } else {
-                                        for _ in 0..fill_amount {
-                                            self.segments[feedback.segment].push(baseval);
+                                        if feedback.align {
+                                            while self.segments[feedback.segment].len() <
+                                                  fill_amount as usize {
+                                                self.segments[feedback.segment].push(baseval);
+                                            }
+                                        } else {
+                                            for _ in 0..fill_amount {
+                                                self.segments[feedback.segment].push(baseval);
+                                            }
                                         }
                                     }
                                 } else {
