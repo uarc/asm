@@ -4,6 +4,14 @@
   "tag_create": {"regex_string": "^:(.*)$"},
   "rules": [
     {
+      "regex_string": "^WORD_BITS$",
+      "segment_values": [[],[32]],
+      "captures": []
+    }, {
+      "regex_string": "^WORD_BYTES$",
+      "segment_values": [[],[4]],
+      "captures": []
+    }, {
       "regex_string": "^\\.(.*)$",
       "segment_values": [[],[0]],
       "captures": [
