@@ -704,7 +704,7 @@
         }
       ]
     }, {
-      "regex_string": "^0$",
+      "regex_string": "^(?:0|0x0|0b0)$",
       "segment_values": [[60],[]],
       "captures": []
     }, {
@@ -890,6 +890,27 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^rwrite([0-3])$",
+      "segment_values": [[96],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^write$",
+      "segment_values": [[100],[]],
+      "captures": []
+    }, {
+      "regex_string": "^writep$",
+      "segment_values": [[101],[]],
+      "captures": []
     }, {
       "regex_string": "^i:-0b([0-1]+)$",
       "segment_values": [[],[0]],
