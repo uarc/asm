@@ -724,6 +724,173 @@
       "segment_values": [[63],[]],
       "captures": []
     }, {
+      "regex_string": "^write([0-3])$",
+      "segment_values": [[64],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^setf([0-3])$",
+      "segment_values": [[68],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^setb([0-3])$",
+      "segment_values": [[72],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^\\+$",
+      "segment_values": [[76],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\+c$",
+      "segment_values": [[77],[]],
+      "captures": []
+    }, {
+      "regex_string": "^-$",
+      "segment_values": [[78],[]],
+      "captures": []
+    }, {
+      "regex_string": "^-c$",
+      "segment_values": [[79],[]],
+      "captures": []
+    }, {
+      "regex_string": "^<<$",
+      "segment_values": [[80],[]],
+      "captures": []
+    }, {
+      "regex_string": "^>>$",
+      "segment_values": [[81],[]],
+      "captures": []
+    }, {
+      "regex_string": "^<<>$",
+      "segment_values": [[82],[]],
+      "captures": []
+    }, {
+      "regex_string": "^>><$",
+      "segment_values": [[83],[]],
+      "captures": []
+    }, {
+      "regex_string": "^>>>$",
+      "segment_values": [[84],[]],
+      "captures": []
+    }, {
+      "regex_string": "^&$",
+      "segment_values": [[85],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\|$",
+      "segment_values": [[86],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\^$",
+      "segment_values": [[87],[]],
+      "captures": []
+    }, {
+      "regex_string": "^reada$",
+      "segment_values": [[88],[]],
+      "captures": []
+    }, {
+      "regex_string": "^call$",
+      "segment_values": [[89],[]],
+      "captures": []
+    }, {
+      "regex_string": "^enter:(.*)$",
+      "segment_values": [[89],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^jump$",
+      "segment_values": [[90],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jenter:(.*)$",
+      "segment_values": [[90],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^iset$",
+      "segment_values": [[91],[]],
+      "captures": []
+    }, {
+      "regex_string": "^slb$",
+      "segment_values": [[92],[]],
+      "captures": []
+    }, {
+      "regex_string": "^usb$",
+      "segment_values": [[93],[]],
+      "captures": []
+    }, {
+      "regex_string": "^send$",
+      "segment_values": [[94],[]],
+      "captures": []
+    }, {
+      "regex_string": "^loopi$",
+      "segment_values": [[95],[]],
+      "captures": []
+    }, {
+      "regex_string": "^loopi:(.*)$",
+      "segment_values": [[95],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^i:-0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
