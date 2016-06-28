@@ -436,6 +436,155 @@
       "segment_values": [[19],[]],
       "captures": []
     }, {
+      "regex_string": "^kill$",
+      "segment_values": [[20],[]],
+      "captures": []
+    }, {
+      "regex_string": "^wait$",
+      "segment_values": [[21],[]],
+      "captures": []
+    }, {
+      "regex_string": "^getbp$",
+      "segment_values": [[22],[]],
+      "captures": []
+    }, {
+      "regex_string": "^getba$",
+      "segment_values": [[23],[]],
+      "captures": []
+    }, {
+      "regex_string": "^calli$",
+      "segment_values": [[24],[]],
+      "captures": []
+    }, {
+      "regex_string": "^calli:(.*)$",
+      "segment_values": [[24],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^enteri:(.*)$",
+      "segment_values": [[24],[0, 0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }, {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i:-0b([0-1]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i:-0x([0-9A-F]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i:-([0-9]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "negate": true,
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i:0b([0-1]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i:0x([0-9A-F]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^i:([0-9]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^-0b([0-1]+)$",
       "segment_values": [[48],[0]],
       "captures": [
