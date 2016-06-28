@@ -492,6 +492,46 @@
         }
       ]
     }, {
+      "regex_string": "^jumpi$",
+      "segment_values": [[25],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jumpi:(.*)$",
+      "segment_values": [[25],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^jenteri:(.*)$",
+      "segment_values": [[25],[0, 0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }, {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^i:-0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
