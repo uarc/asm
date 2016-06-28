@@ -532,6 +532,126 @@
         }
       ]
     }, {
+      "regex_string": "^jc$",
+      "segment_values": [[26],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jc:(.*)$",
+      "segment_values": [[26],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^jnc$",
+      "segment_values": [[27],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jnc:(.*)$",
+      "segment_values": [[27],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^jo$",
+      "segment_values": [[28],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jo:(.*)$",
+      "segment_values": [[28],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^jno$",
+      "segment_values": [[29],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jno:(.*)$",
+      "segment_values": [[29],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^ji$",
+      "segment_values": [[30],[]],
+      "captures": []
+    }, {
+      "regex_string": "^ji:(.*)$",
+      "segment_values": [[30],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^jni$",
+      "segment_values": [[31],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jni:(.*)$",
+      "segment_values": [[31],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^i:-0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
