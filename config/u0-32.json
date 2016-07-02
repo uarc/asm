@@ -1101,6 +1101,22 @@
       "segment_values": [[91],[]],
       "captures": []
     }, {
+      "regex_string": "^iset:(.*)$",
+      "segment_values": [[91],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^slb$",
       "segment_values": [[92],[]],
       "captures": []
