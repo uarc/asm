@@ -41,6 +41,7 @@ fn main() {
             .short("o")
             .multiple(true)
             .number_of_values(1)
+            .takes_value(true)
             .help("Output file names in order (one at a time)"))
         .arg(Arg::with_name("inputs")
             .index(1)
