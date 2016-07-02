@@ -926,7 +926,7 @@
         }
       ]
     }, {
-      "regex_string": "^cv([0-9A-Fa-f])$",
+      "regex_string": "^cv([0-9A-F])$",
       "segment_values": [[32],[]],
       "captures": [
         {
