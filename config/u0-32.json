@@ -76,7 +76,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:0b([0-9]+),0b([0-9]+)$",
+      "regex_string": "^fill:0b([0-1]+),0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -101,7 +101,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:0b([0-9]+),0h([0-9]+)$",
+      "regex_string": "^fill:0b([0-1]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -126,7 +126,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:0b([0-9]+),([0-9]+)$",
+      "regex_string": "^fill:0b([0-1]+),([0-9]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -151,7 +151,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:0h([0-9]+),0b([0-9]+)$",
+      "regex_string": "^fill:(?:0h|0x)([0-9A-F]+),0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -176,7 +176,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:0h([0-9]+),0h([0-9]+)$",
+      "regex_string": "^fill:(?:0h|0x)([0-9A-F]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -201,7 +201,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:0h([0-9]+),([0-9]+)$",
+      "regex_string": "^fill:(?:0h|0x)([0-9A-F]+),([0-9]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -226,7 +226,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:([0-9]+),0b([0-9]+)$",
+      "regex_string": "^fill:([0-9]+),0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -251,7 +251,7 @@
         }
       ]
     }, {
-      "regex_string": "^fill:([0-9]+),0h([0-9]+)$",
+      "regex_string": "^fill:([0-9]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -301,7 +301,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:0b([0-9]+),0b([0-9]+)$",
+      "regex_string": "^align:0b([0-1]+),0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -327,7 +327,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:0b([0-9]+),0h([0-9]+)$",
+      "regex_string": "^align:0b([0-1]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -353,7 +353,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:0b([0-9]+),([0-9]+)$",
+      "regex_string": "^align:0b([0-1]+),([0-9]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -379,7 +379,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:0h([0-9]+),0b([0-9]+)$",
+      "regex_string": "^align:(?:0h|0x)([0-9A-F]+),0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -405,7 +405,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:0h([0-9]+),0h([0-9]+)$",
+      "regex_string": "^align:(?:0h|0x)([0-9A-F]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -431,7 +431,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:0h([0-9]+),([0-9]+)$",
+      "regex_string": "^align:(?:0h|0x)([0-9A-F]+),([0-9]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -457,7 +457,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:([0-9]+),0b([0-9]+)$",
+      "regex_string": "^align:([0-9]+),0b([0-1]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -483,7 +483,7 @@
         }
       ]
     }, {
-      "regex_string": "^align:([0-9]+),0h([0-9]+)$",
+      "regex_string": "^align:([0-9]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -535,7 +535,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:0b([0-9]+),0b([0-9]+)$",
+      "regex_string": "^alignp:0b([0-1]+),0b([0-1]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -561,7 +561,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:0b([0-9]+),0h([0-9]+)$",
+      "regex_string": "^alignp:0b([0-1]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -587,7 +587,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:0b([0-9]+),([0-9]+)$",
+      "regex_string": "^alignp:0b([0-1]+),([0-9]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -613,7 +613,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:0h([0-9]+),0b([0-9]+)$",
+      "regex_string": "^alignp:(?:0h|0x)([0-9A-F]+),0b([0-1]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -639,7 +639,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:0h([0-9]+),0h([0-9]+)$",
+      "regex_string": "^alignp:(?:0h|0x)([0-9A-F]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -665,7 +665,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:0h([0-9]+),([0-9]+)$",
+      "regex_string": "^alignp:(?:0h|0x)([0-9A-F]+),([0-9]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -691,7 +691,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:([0-9]+),0b([0-9]+)$",
+      "regex_string": "^alignp:([0-9]+),0b([0-1]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
@@ -717,7 +717,7 @@
         }
       ]
     }, {
-      "regex_string": "^alignp:([0-9]+),0h([0-9]+)$",
+      "regex_string": "^alignp:([0-9]+),(?:0h|0x)([0-9A-F]+)$",
       "segment_values": [[0],[]],
       "captures": [
         {
