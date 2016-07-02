@@ -12,7 +12,7 @@
       "segment_values": [[],[4]],
       "captures": []
     }, {
-      "regex_string": "^\\.(.*)$",
+      "regex_string": "^i:\\.(.*)$",
       "segment_values": [[],[0]],
       "captures": [
         {
@@ -28,8 +28,40 @@
         }
       ]
     }, {
-      "regex_string": "^\\$(.*)$",
+      "regex_string": "^i:\\$(.*)$",
       "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^\\.(.*)$",
+      "segment_values": [[48],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^\\$(.*)$",
+      "segment_values": [[48],[0]],
       "captures": [
         {
           "Tag": {
