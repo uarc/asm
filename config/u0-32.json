@@ -1174,7 +1174,8 @@
               {
                 "from_segment": 0,
                 "add_segment": 1,
-                "add_index": 0
+                "add_index": 0,
+                "offset": -1
               }
             ]
           }
