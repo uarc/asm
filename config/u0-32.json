@@ -795,15 +795,15 @@
         }
       ]
     }, {
-      "regex_string": "^\\+=1$",
+      "regex_string": "^\\+:1$",
       "segment_values": [[8],[]],
       "captures": []
     }, {
-      "regex_string": "^-=1$",
+      "regex_string": "^-:1$",
       "segment_values": [[9],[]],
       "captures": []
     }, {
-      "regex_string": "^\\+=0b([0-1]+)$",
+      "regex_string": "^\\+:0b([0-1]+)$",
       "segment_values": [[4],[0]],
       "captures": [
         {
@@ -818,7 +818,7 @@
         }
       ]
     }, {
-      "regex_string": "^\\+=0x([0-9A-F]+)$",
+      "regex_string": "^\\+:0x([0-9A-F]+)$",
       "segment_values": [[4],[0]],
       "captures": [
         {
@@ -833,7 +833,7 @@
         }
       ]
     }, {
-      "regex_string": "^\\+=([0-9]+)$",
+      "regex_string": "^\\+:([0-9]+)$",
       "segment_values": [[4],[0]],
       "captures": [
         {
@@ -848,7 +848,7 @@
         }
       ]
     }, {
-      "regex_string": "^-=0b([0-1]+)$",
+      "regex_string": "^-:0b([0-1]+)$",
       "segment_values": [[4],[0]],
       "captures": [
         {
@@ -864,7 +864,7 @@
         }
       ]
     }, {
-      "regex_string": "^-=0x([0-9A-F]+)$",
+      "regex_string": "^-:0x([0-9A-F]+)$",
       "segment_values": [[4],[0]],
       "captures": [
         {
@@ -880,7 +880,7 @@
         }
       ]
     }, {
-      "regex_string": "^-=([0-9]+)$",
+      "regex_string": "^-:([0-9]+)$",
       "segment_values": [[4],[0]],
       "captures": [
         {
@@ -1216,13 +1216,25 @@
       "segment_values": [[60],[]],
       "captures": []
     }, {
-      "regex_string": "^rot0$",
-      "segment_values": [[],[]],
-      "captures": []
-    }, {
-      "regex_string": "^copy0$",
+      "regex_string": "^readi$",
       "segment_values": [[61],[]],
       "captures": []
+    }, {
+      "regex_string": "^readi:(.*)$",
+      "segment_values": [[61],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
     }, {
       "regex_string": "^getp$",
       "segment_values": [[62],[]],
@@ -1275,60 +1287,52 @@
       "segment_values": [[76],[]],
       "captures": []
     }, {
-      "regex_string": "^\\+c$",
+      "regex_string": "^-$",
       "segment_values": [[77],[]],
       "captures": []
     }, {
-      "regex_string": "^-$",
+      "regex_string": "^<<$",
       "segment_values": [[78],[]],
       "captures": []
     }, {
-      "regex_string": "^-c$",
+      "regex_string": "^>>$",
       "segment_values": [[79],[]],
       "captures": []
     }, {
-      "regex_string": "^<<$",
+      "regex_string": "^<<>$",
       "segment_values": [[80],[]],
       "captures": []
     }, {
-      "regex_string": "^>>$",
+      "regex_string": "^>><$",
       "segment_values": [[81],[]],
       "captures": []
     }, {
-      "regex_string": "^<<>$",
+      "regex_string": "^>>>$",
       "segment_values": [[82],[]],
       "captures": []
     }, {
-      "regex_string": "^>><$",
+      "regex_string": "^&$",
       "segment_values": [[83],[]],
       "captures": []
     }, {
-      "regex_string": "^>>>$",
+      "regex_string": "^\\|$",
       "segment_values": [[84],[]],
       "captures": []
     }, {
-      "regex_string": "^&$",
+      "regex_string": "^\\^$",
       "segment_values": [[85],[]],
       "captures": []
     }, {
-      "regex_string": "^\\|$",
+      "regex_string": "^reada$",
       "segment_values": [[86],[]],
       "captures": []
     }, {
-      "regex_string": "^\\^$",
+      "regex_string": "^call$",
       "segment_values": [[87],[]],
       "captures": []
     }, {
-      "regex_string": "^reada$",
-      "segment_values": [[88],[]],
-      "captures": []
-    }, {
-      "regex_string": "^call$",
-      "segment_values": [[89],[]],
-      "captures": []
-    }, {
       "regex_string": "^enter:(.*)$",
-      "segment_values": [[89],[0]],
+      "segment_values": [[87],[0]],
       "captures": [
         {
           "Tag": {
@@ -1344,11 +1348,11 @@
       ]
     }, {
       "regex_string": "^jump$",
-      "segment_values": [[90],[]],
+      "segment_values": [[88],[]],
       "captures": []
     }, {
       "regex_string": "^jenter:(.*)$",
-      "segment_values": [[90],[0]],
+      "segment_values": [[88],[0]],
       "captures": [
         {
           "Tag": {
@@ -1364,11 +1368,11 @@
       ]
     }, {
       "regex_string": "^iset$",
-      "segment_values": [[91],[]],
+      "segment_values": [[89],[]],
       "captures": []
     }, {
       "regex_string": "^iset:(.*)$",
-      "segment_values": [[91],[0]],
+      "segment_values": [[89],[0]],
       "captures": [
         {
           "Tag": {
@@ -1383,17 +1387,41 @@
         }
       ]
     }, {
+      "regex_string": "^seb$",
+      "segment_values": [[90],[]],
+      "captures": []
+    }, {
       "regex_string": "^slb$",
-      "segment_values": [[92],[]],
+      "segment_values": [[91],[]],
       "captures": []
     }, {
       "regex_string": "^usb$",
-      "segment_values": [[93],[]],
+      "segment_values": [[92],[]],
       "captures": []
     }, {
       "regex_string": "^send$",
+      "segment_values": [[93],[]],
+      "captures": []
+    }, {
+      "regex_string": "^writei$",
       "segment_values": [[94],[]],
       "captures": []
+    }, {
+      "regex_string": "^writei:(.*)$",
+      "segment_values": [[94],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
     }, {
       "regex_string": "^loopi$",
       "segment_values": [[95],[]],
@@ -1416,7 +1444,7 @@
         }
       ]
     }, {
-      "regex_string": "^rwrite([0-3])$",
+      "regex_string": "^rawrite([0-3])$",
       "segment_values": [[96],[]],
       "captures": [
         {
@@ -1429,119 +1457,36 @@
         }
       ]
     }, {
-      "regex_string": "^write$",
+      "regex_string": "^rewrite([0-3])$",
       "segment_values": [[100],[]],
-      "captures": []
-    }, {
-      "regex_string": "^writep$",
-      "segment_values": [[101],[]],
-      "captures": []
-    }, {
-      "regex_string": "^==$",
-      "segment_values": [[102],[]],
-      "captures": []
-    }, {
-      "regex_string": "^==:(.*)$",
-      "segment_values": [[102],[0]],
       "captures": [
         {
-          "Tag": {
+          "Num": {
+            "base": 10,
             "feedbacks": [
-              {
-                "from_segment": 0,
-                "add_segment": 1,
-                "add_index": 0
-              }
+              {}
             ]
           }
         }
       ]
     }, {
-      "regex_string": "^!=$",
-      "segment_values": [[103],[]],
-      "captures": []
-    }, {
-      "regex_string": "^!=:(.*)$",
-      "segment_values": [[103],[0]],
-      "captures": [
-        {
-          "Tag": {
-            "feedbacks": [
-              {
-                "from_segment": 0,
-                "add_segment": 1,
-                "add_index": 0
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^<$",
+      "regex_string": "^write$",
       "segment_values": [[104],[]],
       "captures": []
     }, {
-      "regex_string": "^<:(.*)$",
-      "segment_values": [[104],[0]],
-      "captures": [
-        {
-          "Tag": {
-            "feedbacks": [
-              {
-                "from_segment": 0,
-                "add_segment": 1,
-                "add_index": 0
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^<=$",
+      "regex_string": "^writep$",
       "segment_values": [[105],[]],
       "captures": []
     }, {
-      "regex_string": "^<=:(.*)$",
-      "segment_values": [[105],[0]],
-      "captures": [
-        {
-          "Tag": {
-            "feedbacks": [
-              {
-                "from_segment": 0,
-                "add_segment": 1,
-                "add_index": 0
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^<u$",
+      "regex_string": "^writepi$",
       "segment_values": [[106],[]],
       "captures": []
     }, {
-      "regex_string": "^<u:(.*)$",
-      "segment_values": [[106],[0]],
-      "captures": [
-        {
-          "Tag": {
-            "feedbacks": [
-              {
-                "from_segment": 0,
-                "add_segment": 1,
-                "add_index": 0
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^<=u$",
+      "regex_string": "^==$",
       "segment_values": [[107],[]],
       "captures": []
     }, {
-      "regex_string": "^<=u:(.*)$",
+      "regex_string": "^==:(.*)$",
       "segment_values": [[107],[0]],
       "captures": [
         {
@@ -1557,52 +1502,152 @@
         }
       ]
     }, {
-      "regex_string": "^in$",
+      "regex_string": "^!=$",
       "segment_values": [[108],[]],
       "captures": []
     }, {
-      "regex_string": "^out$",
+      "regex_string": "^!=:(.*)$",
+      "segment_values": [[108],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<$",
       "segment_values": [[109],[]],
       "captures": []
     }, {
-      "regex_string": "^incept$",
+      "regex_string": "^<:(.*)$",
+      "segment_values": [[109],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<=$",
       "segment_values": [[110],[]],
       "captures": []
     }, {
-      "regex_string": "^set$",
+      "regex_string": "^<=:(.*)$",
+      "segment_values": [[110],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<u$",
       "segment_values": [[111],[]],
       "captures": []
     }, {
-      "regex_string": "^sel$",
+      "regex_string": "^<u:(.*)$",
+      "segment_values": [[111],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^<=u$",
       "segment_values": [[112],[]],
       "captures": []
     }, {
-      "regex_string": "^seta$",
+      "regex_string": "^<=u:(.*)$",
+      "segment_values": [[112],[0]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "add_segment": 1,
+                "add_index": 0
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^in$",
       "segment_values": [[113],[]],
       "captures": []
     }, {
-      "regex_string": "^loop$",
+      "regex_string": "^out$",
       "segment_values": [[114],[]],
       "captures": []
     }, {
-      "regex_string": "^sef$",
+      "regex_string": "^incept$",
       "segment_values": [[115],[]],
       "captures": []
     }, {
-      "regex_string": "^\\*$",
+      "regex_string": "^set$",
       "segment_values": [[116],[]],
       "captures": []
     }, {
-      "regex_string": "^\\*u$",
+      "regex_string": "^sel$",
       "segment_values": [[117],[]],
       "captures": []
     }, {
-      "regex_string": "^/$",
+      "regex_string": "^seta$",
       "segment_values": [[118],[]],
       "captures": []
     }, {
-      "regex_string": "^/u$",
+      "regex_string": "^loop$",
       "segment_values": [[119],[]],
+      "captures": []
+    }, {
+      "regex_string": "^sef$",
+      "segment_values": [[120],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\*$",
+      "segment_values": [[121],[]],
+      "captures": []
+    }, {
+      "regex_string": "^\\*u$",
+      "segment_values": [[122],[]],
+      "captures": []
+    }, {
+      "regex_string": "^/$",
+      "segment_values": [[123],[]],
+      "captures": []
+    }, {
+      "regex_string": "^/u$",
+      "segment_values": [[124],[]],
       "captures": []
     }, {
       "regex_string": "^rot([0-9]|[1-5][0-9]|6[0-3])$",
