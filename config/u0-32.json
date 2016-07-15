@@ -1650,6 +1650,10 @@
       "segment_values": [[124],[]],
       "captures": []
     }, {
+      "regex_string": "^reset$",
+      "segment_values": [[127],[]],
+      "captures": []
+    }, {
       "regex_string": "^rot([0-9]|[1-5][0-9]|6[0-3])$",
       "segment_values": [[128],[]],
       "captures": [
