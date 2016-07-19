@@ -72,9 +72,7 @@ impl<'a> Parser<'a> {
 
             if self.config.split_whitespace {
                 for word in line.split_whitespace() {
-                    println!("Before: {}", self.segments[1].len());
                     self.parse_segment(word, index + 1);
-                    println!("After: {}", self.segments[1].len());
                 }
             } else {
                 self.parse_segment(&line, index + 1);
@@ -198,7 +196,6 @@ impl<'a> Parser<'a> {
                         &Capture::Str { add_segment } => {
                             for c in cap_string.chars() {
                                 self.segments[add_segment].push(c as u64);
-                                println!("Parsed: {}", c as u64);
                             }
                         }
                         &Capture::Num { ref feedbacks, ref base } => {
