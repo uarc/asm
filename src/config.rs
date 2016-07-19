@@ -29,7 +29,7 @@ fn feedback_default_align() -> bool {
 
 // Default is -1 so that the number specified copies the number this many times and inserts it.
 fn feedback_default_fill_offset() -> isize {
-    -1
+    0
 }
 
 #[derive(Deserialize, Debug)]
@@ -92,6 +92,9 @@ pub struct TagFeedback {
 pub enum Capture {
     Tag {
         feedbacks: Vec<TagFeedback>,
+    },
+    Str {
+        add_segment: usize,
     },
     Num {
         /// The base the number is to be interpreted as.
@@ -217,6 +220,13 @@ impl Config {
                                        feedback.add_index,
                                        feedback.add_segment);
                             }
+                        }
+                    }
+                    &Capture::Str { add_segment } => {
+                        if add_segment >= segment_counts.len() {
+                            panic!("Error: Rule \"{}\" attempts to access invalid segment {}.",
+                                   rule.regex_string,
+                                   add_segment);
                         }
                     }
                     &Capture::Num { ref feedbacks, .. } => {

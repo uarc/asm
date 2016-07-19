@@ -12,6 +12,16 @@
       "segment_values": [[],[4]],
       "captures": []
     }, {
+      "regex_string": "^i:\"(.*)$",
+      "segment_values": [[],[]],
+      "captures": [
+        {
+          "Str": {
+            "add_segment": 1
+          }
+        }
+      ]
+    }, {
       "regex_string": "^i:\\.(.*)$",
       "segment_values": [[],[0]],
       "captures": [
