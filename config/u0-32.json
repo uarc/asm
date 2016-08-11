@@ -891,6 +891,19 @@
         }
       ]
     }, {
+      "regex_string": "^move([0-3])$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^move([0-3]):0b(.*)$",
       "segment_values": [[0, 0],[]],
       "captures": [
@@ -962,6 +975,19 @@
     }, {
       "regex_string": "^raread([0-3])$",
       "segment_values": [[4],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^rereadi([0-3])$",
+      "segment_values": [[8],[]],
       "captures": [
         {
           "Num": {
@@ -1082,6 +1108,10 @@
       "segment_values": [[21],[]],
       "captures": []
     }, {
+      "regex_string": "^iloop$",
+      "segment_values": [[22],[]],
+      "captures": []
+    }, {
       "regex_string": "^iloop:(.*)$",
       "segment_values": [[22, 0, 0],[]],
       "captures": [
@@ -1124,6 +1154,10 @@
       "segment_values": [[26],[]],
       "captures": []
     }, {
+      "regex_string": "^calli$",
+      "segment_values": [[27],[]],
+      "captures": []
+    }, {
       "regex_string": "^calli:(.*)$",
       "segment_values": [[27, 0, 0, 0, 0],[]],
       "captures": [
@@ -1155,6 +1189,10 @@
         }
       ]
     }, {
+      "regex_string": "^jmpi$",
+      "segment_values": [[28],[]],
+      "captures": []
+    }, {
       "regex_string": "^jmpi:(.*)$",
       "segment_values": [[28, 0, 0, 0, 0],[]],
       "captures": [
@@ -1185,6 +1223,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^bra$",
+      "segment_values": [[26],[]],
+      "captures": []
     }, {
       "regex_string": "^bra:(.*)$",
       "segment_values": [[26, 0, 0],[]],
@@ -1223,6 +1265,19 @@
         }
       ]
     }, {
+      "regex_string": "^read([0-3])$",
+      "segment_values": [[48],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^read([0-3]):(.*)$",
       "segment_values": [[48, 0],[]],
       "captures": [
@@ -1240,6 +1295,19 @@
               {
                 "index": 1
               }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^rareadi([0-3])$",
+      "segment_values": [[52],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
             ]
           }
         }
@@ -1293,6 +1361,19 @@
         }
       ]
     }, {
+      "regex_string": "^writepre([0-3])$",
+      "segment_values": [[64],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^writepre([0-3]):(.*)$",
       "segment_values": [[64, 0],[]],
       "captures": [
@@ -1310,6 +1391,19 @@
               {
                 "index": 1
               }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^writepst([0-3])$",
+      "segment_values": [[68],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
             ]
           }
         }
@@ -1350,6 +1444,19 @@
         }
       ]
     }, {
+      "regex_string": "^rawritei([0-3])$",
+      "segment_values": [[76],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^rawritei([0-3]):(.*)$",
       "segment_values": [[76, 0],[]],
       "captures": [
@@ -1367,6 +1474,19 @@
               {
                 "index": 1
               }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^rewritei([0-3])$",
+      "segment_values": [[80],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
             ]
           }
         }
@@ -1477,6 +1597,10 @@
       "segment_values": [[106],[]],
       "captures": []
     }, {
+      "regex_string": "^beq$",
+      "segment_values": [[107],[]],
+      "captures": []
+    }, {
       "regex_string": "^beq:(.*)$",
       "segment_values": [[107, 0, 0],[]],
       "captures": [
@@ -1500,6 +1624,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^bne$",
+      "segment_values": [[108],[]],
+      "captures": []
     }, {
       "regex_string": "^bne:(.*)$",
       "segment_values": [[108, 0, 0],[]],
@@ -1525,6 +1653,10 @@
         }
       ]
     }, {
+      "regex_string": "^bles$",
+      "segment_values": [[109],[]],
+      "captures": []
+    }, {
       "regex_string": "^bles:(.*)$",
       "segment_values": [[109, 0, 0],[]],
       "captures": [
@@ -1548,6 +1680,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^bleq$",
+      "segment_values": [[110],[]],
+      "captures": []
     }, {
       "regex_string": "^bleq:(.*)$",
       "segment_values": [[110, 0, 0],[]],
@@ -1573,6 +1709,10 @@
         }
       ]
     }, {
+      "regex_string": "^blesu$",
+      "segment_values": [[111],[]],
+      "captures": []
+    }, {
       "regex_string": "^blesu:(.*)$",
       "segment_values": [[111, 0, 0],[]],
       "captures": [
@@ -1596,6 +1736,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^blequ$",
+      "segment_values": [[112],[]],
+      "captures": []
     }, {
       "regex_string": "^blequ:(.*)$",
       "segment_values": [[112, 0, 0],[]],
@@ -1659,6 +1803,14 @@
     }, {
       "regex_string": "^ddrop$",
       "segment_values": [[122],[]],
+      "captures": []
+    }, {
+      "regex_string": "^addi$",
+      "segment_values": [[128],[]],
+      "captures": []
+    }, {
+      "regex_string": "^addi32$",
+      "segment_values": [[128],[]],
       "captures": []
     }, {
       "regex_string": "^addi:0b(.*)$",
@@ -1736,6 +1888,85 @@
         }
       ]
     }, {
+      "regex_string": "^addi32:0b(.*)$",
+      "segment_values": [[128, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^addi32:(?:0h|0x)(.*)$",
+      "segment_values": [[128, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^addi32:(.*)$",
+      "segment_values": [[128, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^addi8$",
+      "segment_values": [[129],[]],
+      "captures": []
+    }, {
       "regex_string": "^addi8:0b(.*)$",
       "segment_values": [[129, 0],[]],
       "captures": [
@@ -1783,6 +2014,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^addi16$",
+      "segment_values": [[130],[]],
+      "captures": []
     }, {
       "regex_string": "^addi16:0b(.*)$",
       "segment_values": [[130, 0, 0],[]],
@@ -1840,6 +2075,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^subi$",
+      "segment_values": [[131],[]],
+      "captures": []
     }, {
       "regex_string": "^subi:0b(.*)$",
       "segment_values": [[131, 0, 0, 0, 0],[]],
@@ -1916,6 +2155,10 @@
         }
       ]
     }, {
+      "regex_string": "^lsli$",
+      "segment_values": [[132],[]],
+      "captures": []
+    }, {
       "regex_string": "^lsli:(.*)$",
       "segment_values": [[132, 0],[]],
       "captures": [
@@ -1931,6 +2174,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^csli$",
+      "segment_values": [[133],[]],
+      "captures": []
     }, {
       "regex_string": "^csli:(.*)$",
       "segment_values": [[133, 0],[]],
@@ -1948,6 +2195,10 @@
         }
       ]
     }, {
+      "regex_string": "^asri$",
+      "segment_values": [[134],[]],
+      "captures": []
+    }, {
       "regex_string": "^asri:(.*)$",
       "segment_values": [[134, 0],[]],
       "captures": [
@@ -1963,6 +2214,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^andi$",
+      "segment_values": [[135],[]],
+      "captures": []
     }, {
       "regex_string": "^andi:0b(.*)$",
       "segment_values": [[135, 0, 0, 0, 0],[]],
@@ -2039,6 +2294,10 @@
         }
       ]
     }, {
+      "regex_string": "^ori$",
+      "segment_values": [[136],[]],
+      "captures": []
+    }, {
       "regex_string": "^ori:0b(.*)$",
       "segment_values": [[136, 0, 0, 0, 0],[]],
       "captures": [
@@ -2113,6 +2372,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^xori$",
+      "segment_values": [[137],[]],
+      "captures": []
     }, {
       "regex_string": "^xori:0b(.*)$",
       "segment_values": [[137, 0, 0, 0, 0],[]],
@@ -2189,6 +2452,10 @@
         }
       ]
     }, {
+      "regex_string": "^bc$",
+      "segment_values": [[138],[]],
+      "captures": []
+    }, {
       "regex_string": "^bc:(.*)$",
       "segment_values": [[138, 0, 0],[]],
       "captures": [
@@ -2212,6 +2479,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^bnc$",
+      "segment_values": [[139],[]],
+      "captures": []
     }, {
       "regex_string": "^bnc:(.*)$",
       "segment_values": [[139, 0, 0],[]],
@@ -2237,6 +2508,10 @@
         }
       ]
     }, {
+      "regex_string": "^bo$",
+      "segment_values": [[140],[]],
+      "captures": []
+    }, {
       "regex_string": "^bo:(.*)$",
       "segment_values": [[140, 0, 0],[]],
       "captures": [
@@ -2260,6 +2535,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^bno$",
+      "segment_values": [[141],[]],
+      "captures": []
     }, {
       "regex_string": "^bno:(.*)$",
       "segment_values": [[141, 0, 0],[]],
@@ -2285,6 +2564,10 @@
         }
       ]
     }, {
+      "regex_string": "^bi$",
+      "segment_values": [[142],[]],
+      "captures": []
+    }, {
       "regex_string": "^bi:(.*)$",
       "segment_values": [[142, 0, 0],[]],
       "captures": [
@@ -2309,6 +2592,10 @@
         }
       ]
     }, {
+      "regex_string": "^bni$",
+      "segment_values": [[143],[]],
+      "captures": []
+    }, {
       "regex_string": "^bni:(.*)$",
       "segment_values": [[143, 0, 0],[]],
       "captures": [
@@ -2328,6 +2615,19 @@
                 "add_segment": 0,
                 "add_index": 2
               }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^index([0-3])$",
+      "segment_values": [[144],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
             ]
           }
         }
@@ -2354,6 +2654,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^imm8$",
+      "segment_values": [[148],[]],
+      "captures": []
     }, {
       "regex_string": "^imm8:0b(.*)$",
       "segment_values": [[148, 0],[]],
@@ -2402,6 +2706,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^imm16$",
+      "segment_values": [[149],[]],
+      "captures": []
     }, {
       "regex_string": "^imm16:0b(.*)$",
       "segment_values": [[149, 0, 0],[]],
@@ -2454,6 +2762,85 @@
               }, {
                 "shift": -8,
                 "index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^imm32$",
+      "segment_values": [[150],[]],
+      "captures": []
+    }, {
+      "regex_string": "^imm32:0b(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^imm32:(?:0h|0x)(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^imm32:(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
               }
             ]
           }
@@ -2583,6 +2970,10 @@
       "segment_values": [[169],[]],
       "captures": []
     }, {
+      "regex_string": "^loop$",
+      "segment_values": [[170],[]],
+      "captures": []
+    }, {
       "regex_string": "^loop:(.*)$",
       "segment_values": [[170, 0, 0],[]],
       "captures": [
@@ -2609,6 +3000,10 @@
         }
       ]
     }, {
+      "regex_string": "^bz$",
+      "segment_values": [[171],[]],
+      "captures": []
+    }, {
       "regex_string": "^bz:(.*)$",
       "segment_values": [[171, 0, 0],[]],
       "captures": [
@@ -2633,6 +3028,10 @@
         }
       ]
     }, {
+      "regex_string": "^bnz$",
+      "segment_values": [[172],[]],
+      "captures": []
+    }, {
       "regex_string": "^bnz:(.*)$",
       "segment_values": [[172, 0, 0],[]],
       "captures": [
@@ -2656,6 +3055,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^writepi$",
+      "segment_values": [[173],[]],
+      "captures": []
     }, {
       "regex_string": "^writepi:(.*)$",
       "segment_values": [[173, 0, 0, 0, 0],[]],
@@ -2688,6 +3091,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^writepri$",
+      "segment_values": [[174],[]],
+      "captures": []
     }, {
       "regex_string": "^writepri:(.*)$",
       "segment_values": [[174, 0, 0],[]],
