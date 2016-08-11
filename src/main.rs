@@ -62,8 +62,7 @@ fn main() {
     let mut parser = Parser::new(&config);
 
     for name in matches.values_of("inputs")
-        .map(|iter| iter.collect())
-        .unwrap_or_else(|| Vec::new()) {
+        .map_or_else(Vec::new, |iter| iter.collect()) {
         parser.parse(BufReader::new(File::open(&name)
             .unwrap_or_else(|e| panic!("Error: Failed to open input file \"{}\": {}", name, e))));
     }
@@ -71,8 +70,7 @@ fn main() {
     // Link the program.
     parser.link();
 
-    let outputs =
-        matches.values_of("outputs").map(|iter| iter.collect()).unwrap_or_else(|| Vec::new());
+    let outputs = matches.values_of("outputs").map_or_else(Vec::new, |iter| iter.collect());
     for (i, name) in (0..config.segment_widths.len())
         .zip_longest(outputs)
         .map(|v| {

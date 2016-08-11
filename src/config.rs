@@ -7,7 +7,7 @@ fn feedback_default_negate() -> bool {
     false
 }
 
-fn feedback_default_shift() -> u32 {
+fn feedback_default_shift() -> i32 {
     0
 }
 
@@ -39,7 +39,7 @@ pub struct NumFeedback {
     pub negate: bool,
     /// The amount to shift the value to the left before adding.
     #[serde(default="feedback_default_shift")]
-    pub shift: u32,
+    pub shift: i32,
     /// The stream this feedback is applied to.
     #[serde(default="feedback_default_segment")]
     pub segment: usize,
@@ -61,7 +61,7 @@ fn tag_feedback_default_relative() -> bool {
     false
 }
 
-fn tag_feedback_default_shift() -> u32 {
+fn tag_feedback_default_shift() -> i32 {
     0
 }
 
@@ -76,9 +76,9 @@ pub struct TagFeedback {
     /// Is this tag usage relative?
     #[serde(default="tag_feedback_default_relative")]
     pub relative: bool,
-    /// The amount to left shift the absolute position before adding.
+    /// The amount to left shift the absolute position before adding; negative values shift right.
     #[serde(default="tag_feedback_default_shift")]
-    pub shift: u32,
+    pub shift: i32,
     /// The segment to add the absolute position to.
     pub add_segment: usize,
     /// The index at which to add the absolute position.
@@ -198,8 +198,8 @@ impl Config {
                 }
             }
             for capture in &rule.captures {
-                match capture {
-                    &Capture::Tag { ref feedbacks } => {
+                match *capture {
+                    Capture::Tag { ref feedbacks } => {
                         for feedback in feedbacks {
                             if feedback.from_segment >= segment_counts.len() {
                                 panic!("Error: Rule \"{}\" attempts to access invalid tag \
@@ -222,14 +222,14 @@ impl Config {
                             }
                         }
                     }
-                    &Capture::Str { add_segment } => {
+                    Capture::Str { add_segment } => {
                         if add_segment >= segment_counts.len() {
                             panic!("Error: Rule \"{}\" attempts to access invalid segment {}.",
                                    rule.regex_string,
                                    add_segment);
                         }
                     }
-                    &Capture::Num { ref feedbacks, .. } => {
+                    Capture::Num { ref feedbacks, .. } => {
                         for feedback in feedbacks {
                             let count = *segment_counts.get(feedback.segment)
                                 .unwrap_or_else(|| {

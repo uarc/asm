@@ -12,6 +12,8 @@ pub enum OutputFormat {
 struct Replacement {
     // Line for purposes of printing errors.
     line: usize,
+    // Left shift amount
+    shift: i32,
     // Segment to add the value to.
     add_segment: usize,
     // The index in the add_segment to add the value.
@@ -29,6 +31,14 @@ pub struct Parser<'a> {
     segments: Vec<Vec<u64>>,
     tags: BTreeMap<String, Vec<usize>>,
     replacements: Vec<Replacement>,
+}
+
+fn shift_left_or_right(a: u64, shift: i32) -> u64 {
+    if shift < 0 {
+        a >> (-shift)
+    } else {
+        a << shift
+    }
 }
 
 impl<'a> Parser<'a> {
@@ -57,7 +67,7 @@ impl<'a> Parser<'a> {
                        r.line);
             });
             self.segments[r.add_segment][r.index] +=
-                (tag[r.pos_segment] as isize + r.pos_offset) as u64;
+                shift_left_or_right((tag[r.pos_segment] as isize + r.pos_offset) as u64, r.shift);
         }
     }
 
@@ -75,7 +85,7 @@ impl<'a> Parser<'a> {
                     self.parse_segment(word, index + 1);
                 }
             } else {
-                self.parse_segment(&line, index + 1);
+                self.parse_segment(line, index + 1);
             }
         }
     }
@@ -118,10 +128,10 @@ impl<'a> Parser<'a> {
                 let width = self.config.segment_widths[segment];
                 for val in &self.segments[segment] {
                     BigEndian::write_u64(&mut bytes, *val);
-                    w.write_all(&(String::from_iter(bytes[(8 - width)..8]
+                    w.write_all((String::from_iter(bytes[(8 - width)..8]
                                 .iter()
                                 .map(|&b| format!("{:02X}", b))) +
-                                     "\n")
+                                    "\n")
                             .as_bytes())
                         .unwrap_or_else(|e| {
                             panic!("Error: Writing to output file for segment {} failed: {}",
@@ -168,17 +178,23 @@ impl<'a> Parser<'a> {
                 let mut segvals = rule.segment_values.clone();
                 for self_reference in &rule.self_references {
                     segvals[self_reference.add_segment][self_reference.add_index] +=
-                        (self.segments[self_reference.from_segment].len() as u64) <<
-                        self_reference.shift;
+                        if self_reference.shift < 0 {
+                            (self.segments[self_reference.from_segment].len() as u64) >>
+                            ((-self_reference.shift) as u32)
+                        } else {
+                            (self.segments[self_reference.from_segment].len() as u64) <<
+                            (self_reference.shift as u32)
+                        };
                 }
                 for (index, capture) in rule.captures.iter().enumerate() {
                     use std::mem::transmute;
                     let cap_string = caps.at(index + 1).unwrap();
-                    match capture {
-                        &Capture::Tag { ref feedbacks } => {
+                    match *capture {
+                        Capture::Tag { ref feedbacks } => {
                             for feedback in feedbacks {
                                 self.replacements.push(Replacement {
                                     line: line,
+                                    shift: feedback.shift,
                                     add_segment: feedback.add_segment,
                                     index: self.segments[feedback.add_segment].len() +
                                            feedback.add_index,
@@ -193,12 +209,12 @@ impl<'a> Parser<'a> {
                                 });
                             }
                         }
-                        &Capture::Str { add_segment } => {
+                        Capture::Str { add_segment } => {
                             for c in cap_string.chars() {
                                 self.segments[add_segment].push(c as u64);
                             }
                         }
-                        &Capture::Num { ref feedbacks, ref base } => {
+                        Capture::Num { ref feedbacks, ref base } => {
                             let pval = i64::from_str_radix(cap_string, *base).unwrap_or_else(|e| {
                                 panic!("Error: Failed to parse captured string \"{}\" from \
                                         \"{}\": {}",
@@ -209,7 +225,7 @@ impl<'a> Parser<'a> {
                             let val: u64 = unsafe { transmute(pval) };
 
                             for feedback in feedbacks {
-                                let mut shiftval = val << feedback.shift;
+                                let mut shiftval = shift_left_or_right(val, feedback.shift);
                                 if feedback.negate {
                                     shiftval = !shiftval + 1;
                                 }
@@ -218,16 +234,14 @@ impl<'a> Parser<'a> {
                                     let fill_amount = shiftval as isize + feedback.fill_offset;
                                     if fill_amount.is_negative() {
                                         panic!("Error: Got a negative fill amount!");
+                                    } else if feedback.align {
+                                        while self.segments[feedback.segment].len() <
+                                              fill_amount as usize {
+                                            self.segments[feedback.segment].push(baseval);
+                                        }
                                     } else {
-                                        if feedback.align {
-                                            while self.segments[feedback.segment].len() <
-                                                  fill_amount as usize {
-                                                self.segments[feedback.segment].push(baseval);
-                                            }
-                                        } else {
-                                            for _ in 0..fill_amount {
-                                                self.segments[feedback.segment].push(baseval);
-                                            }
+                                        for _ in 0..fill_amount {
+                                            self.segments[feedback.segment].push(baseval);
                                         }
                                     }
                                     segvals[feedback.segment].pop();
