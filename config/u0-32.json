@@ -2542,6 +2542,206 @@
       "regex_string": "^geta$",
       "segment_values": [[153],[]],
       "captures": []
+    }, {
+      "regex_string": "^or$",
+      "segment_values": [[160],[]],
+      "captures": []
+    }, {
+      "regex_string": "^xor$",
+      "segment_values": [[161],[]],
+      "captures": []
+    }, {
+      "regex_string": "^read$",
+      "segment_values": [[162],[]],
+      "captures": []
+    }, {
+      "regex_string": "^call$",
+      "segment_values": [[163],[]],
+      "captures": []
+    }, {
+      "regex_string": "^jmp$",
+      "segment_values": [[164],[]],
+      "captures": []
+    }, {
+      "regex_string": "^intset$",
+      "segment_values": [[165],[]],
+      "captures": []
+    }, {
+      "regex_string": "^seb$",
+      "segment_values": [[166],[]],
+      "captures": []
+    }, {
+      "regex_string": "^slb$",
+      "segment_values": [[167],[]],
+      "captures": []
+    }, {
+      "regex_string": "^usb$",
+      "segment_values": [[168],[]],
+      "captures": []
+    }, {
+      "regex_string": "^intsend$",
+      "segment_values": [[169],[]],
+      "captures": []
+    }, {
+      "regex_string": "^loop:(.*)$",
+      "segment_values": [[170, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1,
+                "offset": -4
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2,
+                "offset": -4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^bz:(.*)$",
+      "segment_values": [[171, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^bnz:(.*)$",
+      "segment_values": [[172, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^writepi:(.*)$",
+      "segment_values": [[173, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }, {
+                "from_segment": 0,
+                "shift": -16,
+                "add_segment": 0,
+                "add_index": 3
+              }, {
+                "from_segment": 0,
+                "shift": -24,
+                "add_segment": 0,
+                "add_index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^writepri:(.*)$",
+      "segment_values": [[174, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^drop$",
+      "segment_values": [[175],[]],
+      "captures": []
+    }, {
+      "regex_string": "^rot([0-9]|[1-5][0-9]|6[0-3])$",
+      "segment_values": [[192],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^copy([0-9]|[1-5][0-9]|6[0-3])$",
+      "segment_values": [[224],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
     }
   ]
 }
