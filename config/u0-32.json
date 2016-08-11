@@ -2847,81 +2847,6 @@
         }
       ]
     }, {
-      "regex_string": "^0b(.*)$",
-      "segment_values": [[150, 0, 0, 0, 0],[]],
-      "captures": [
-        {
-          "Num": {
-            "base": 2,
-            "feedbacks": [
-              {
-                "shift": 0,
-                "index": 1
-              }, {
-                "shift": -8,
-                "index": 2
-              }, {
-                "shift": -16,
-                "index": 3
-              }, {
-                "shift": -24,
-                "index": 4
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^(?:0h|0x)(.*)$",
-      "segment_values": [[150, 0, 0, 0, 0],[]],
-      "captures": [
-        {
-          "Num": {
-            "base": 16,
-            "feedbacks": [
-              {
-                "shift": 0,
-                "index": 1
-              }, {
-                "shift": -8,
-                "index": 2
-              }, {
-                "shift": -16,
-                "index": 3
-              }, {
-                "shift": -24,
-                "index": 4
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^(.*)$",
-      "segment_values": [[150, 0, 0, 0, 0],[]],
-      "captures": [
-        {
-          "Num": {
-            "base": 10,
-            "feedbacks": [
-              {
-                "shift": 0,
-                "index": 1
-              }, {
-                "shift": -8,
-                "index": 2
-              }, {
-                "shift": -16,
-                "index": 3
-              }, {
-                "shift": -24,
-                "index": 4
-              }
-            ]
-          }
-        }
-      ]
-    }, {
       "regex_string": "^getp$",
       "segment_values": [[152],[]],
       "captures": []
@@ -3145,6 +3070,81 @@
             "base": 10,
             "feedbacks": [
               {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^0b(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^(?:0h|0x)(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "shift": 0,
+                "index": 1
+              }, {
+                "shift": -8,
+                "index": 2
+              }, {
+                "shift": -16,
+                "index": 3
+              }, {
+                "shift": -24,
+                "index": 4
+              }
             ]
           }
         }
