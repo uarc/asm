@@ -62,7 +62,7 @@
         }
       ]
     }, {
-      "regex_string": "^i8:\\.(.*)$",
+      "regex_string": "^imm8:\\.(.*)$",
       "segment_values": [[148, 0],[]],
       "captures": [
         {
@@ -78,7 +78,7 @@
         }
       ]
     }, {
-      "regex_string": "^i16:\\.(.*)$",
+      "regex_string": "^imm16:\\.(.*)$",
       "segment_values": [[149, 0, 0],[]],
       "captures": [
         {
@@ -100,7 +100,7 @@
       ]
     }, {
       "regex_string": "^\\.(.*)$",
-      "segment_values": [[149, 0, 0, 0, 0],[]],
+      "segment_values": [[150, 0, 0, 0, 0],[]],
       "captures": [
         {
           "Tag": {
@@ -130,7 +130,7 @@
         }
       ]
     }, {
-      "regex_string": "^i8:\\$(.*)$",
+      "regex_string": "^imm8:\\$(.*)$",
       "segment_values": [[148, 0],[]],
       "captures": [
         {
@@ -146,7 +146,7 @@
         }
       ]
     }, {
-      "regex_string": "^i16:\\$(.*)$",
+      "regex_string": "^imm16:\\$(.*)$",
       "segment_values": [[149, 0, 0],[]],
       "captures": [
         {
@@ -167,8 +167,39 @@
         }
       ]
     }, {
+      "regex_string": "^imm32:\\$(.*)$",
+      "segment_values": [[150, 0, 0, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 1,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 1,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }, {
+                "from_segment": 1,
+                "shift": -16,
+                "add_segment": 0,
+                "add_index": 3
+              }, {
+                "from_segment": 1,
+                "shift": -24,
+                "add_segment": 0,
+                "add_index": 4
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^\\$(.*)$",
-      "segment_values": [[149, 0, 0, 0, 0],[]],
+      "segment_values": [[150, 0, 0, 0, 0],[]],
       "captures": [
         {
           "Tag": {
