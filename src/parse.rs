@@ -246,7 +246,7 @@ impl<'a> Parser<'a> {
                                     }
                                     segvals[feedback.segment].pop();
                                 } else {
-                                    segvals[feedback.segment][index] += shiftval;
+                                    segvals[feedback.segment][feedback.index] += shiftval;
                                 }
                             }
                         }
