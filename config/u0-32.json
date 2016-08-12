@@ -1556,6 +1556,10 @@
         }
       ]
     }, {
+      "regex_string": "^discard$",
+      "segment_values": [[27],[]],
+      "captures": []
+    }, {
       "regex_string": "^cv([0-9A-Fa-f])$",
       "segment_values": [[32],[]],
       "captures": [
