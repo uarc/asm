@@ -2945,7 +2945,7 @@
       "regex_string": "^read$",
       "segment_values": [[162],[]],
       "captures": []
-    }, , {
+    }, {
       "regex_string": "^reads$",
       "segment_values": [[162, 32],[]],
       "captures": []
