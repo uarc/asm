@@ -1,7 +1,10 @@
 {
   "segment_widths": [1, 4],
   "split_whitespace": true,
-  "tag_create": {"regex_string": "^:(.*)$"},
+  "tag_create": [
+    {"regex_string": "^:(.*)$"},
+    {"regex_string": "^(\\++|-+)$"}
+  ],
   "rules": [
     {
       "regex_string": "^\\$WORD_BITS$",

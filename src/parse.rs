@@ -190,40 +190,43 @@ impl<'a> Parser<'a> {
     }
 
     fn attempt_tag_create(&mut self, segment: &str, line: usize) -> bool {
-        if let Some(caps) = self.config.tag_create.regex.as_ref().unwrap().captures(segment) {
-            let s = caps.at(1).unwrap();
-            if s.chars().all(|c| c == '+') {
-                self.plus_tags.push((s.len(),
-                                     self.segments
-                    .iter()
-                    .map(|v| v.len())
-                    .collect()));
-            } else if s.chars().all(|c| c == '-') {
-                self.minus_tags.push((s.len(),
-                                      self.segments
-                    .iter()
-                    .map(|v| v.len())
-                    .collect()));
-            } else {
-                use std::collections::hash_map::Entry;
-                match self.tags.entry(s.to_string()) {
-                    Entry::Occupied(_) => {
-                        panic!("Attempted to create duplicate tag \"{}\" on line {}",
-                               s,
-                               line)
-                    }
-                    Entry::Vacant(v) => {
-                        v.insert(self.segments
-                            .iter()
-                            .map(|v| v.len())
-                            .collect());
+        for tc in &self.config.tag_creates {
+            if let Some(caps) = tc.regex.as_ref().unwrap().captures(segment) {
+                let s = caps.at(1).unwrap();
+                if s.chars().all(|c| c == '+') {
+                    self.plus_tags.push((s.len(),
+                                         self.segments
+                        .iter()
+                        .map(|v| v.len())
+                        .collect()));
+                } else if s.chars().all(|c| c == '-') {
+                    self.minus_tags.push((s.len(),
+                                          self.segments
+                        .iter()
+                        .map(|v| v.len())
+                        .collect()));
+                } else {
+                    use std::collections::hash_map::Entry;
+                    match self.tags.entry(s.to_string()) {
+                        Entry::Occupied(_) => {
+                            panic!("Attempted to create duplicate tag \"{}\" on line {}",
+                                   s,
+                                   line)
+                        }
+                        Entry::Vacant(v) => {
+                            v.insert(self.segments
+                                .iter()
+                                .map(|v| v.len())
+                                .collect());
+                        }
                     }
                 }
+                return true;
+            } else {
+                return false;
             }
-            true
-        } else {
-            false
         }
+        false
     }
 
     fn attempt_rules(&mut self, segment: &str, line: usize) -> bool {

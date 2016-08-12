@@ -134,7 +134,7 @@ pub struct Config {
     /// If the regexes are on a word basis
     pub split_whitespace: bool,
     /// The rule for creating tags.
-    pub tag_create: TagCreateRule,
+    pub tag_creates: Vec<TagCreateRule>,
     /// The rules for everything else.
     pub rules: Vec<Rule>,
 }
@@ -158,10 +158,13 @@ impl Config {
                 panic!("Error: A segment width of 0 is not allowed.");
             }
         }
-        self.tag_create.regex = Some(Regex::new(&self.tag_create.regex_string)
-            .unwrap_or_else(|e| panic!("Error: Failed to parse tag create regex: {}", e)));
-        if self.tag_create.regex.as_ref().unwrap().captures_len() != 2 {
-            panic!("Error: The tag create regex must always have one capture group for the tag.");
+        for tc in &mut self.tag_creates {
+            tc.regex = Some(Regex::new(&tc.regex_string)
+                .unwrap_or_else(|e| panic!("Error: Failed to parse tag create regex: {}", e)));
+            if tc.regex.as_ref().unwrap().captures_len() != 2 {
+                panic!("Error: The tag create regex must always have one capture group for the \
+                        tag.");
+            }
         }
 
         for rule in &mut self.rules {
