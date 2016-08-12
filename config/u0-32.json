@@ -3132,6 +3132,10 @@
       "segment_values": [[175],[]],
       "captures": []
     }, {
+      "regex_string": "^nop$",
+      "segment_values": [[192],[]],
+      "captures": []
+    }, {
       "regex_string": "^rot([0-9]|[1-5][0-9]|6[0-3])$",
       "segment_values": [[192],[]],
       "captures": [
@@ -3144,6 +3148,10 @@
           }
         }
       ]
+    }, {
+      "regex_string": "^dup$",
+      "segment_values": [[224],[]],
+      "captures": []
     }, {
       "regex_string": "^copy([0-9]|[1-5][0-9]|6[0-3])$",
       "segment_values": [[224],[]],
