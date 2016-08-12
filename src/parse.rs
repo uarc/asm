@@ -1,5 +1,5 @@
 use super::config::{Config, Capture};
-use std::collections::BTreeMap;
+use std::collections::HashMap;
 use std::io::{BufRead, Write};
 
 #[derive(Debug, Clone, Copy)]
@@ -29,7 +29,7 @@ struct Replacement {
 pub struct Parser<'a> {
     config: &'a Config,
     segments: Vec<Vec<u64>>,
-    tags: BTreeMap<String, Vec<usize>>,
+    tags: HashMap<String, Vec<usize>>,
     plus_tags: Vec<(usize, Vec<usize>)>,
     minus_tags: Vec<(usize, Vec<usize>)>,
     replacements: Vec<Replacement>,
@@ -54,7 +54,7 @@ impl<'a> Parser<'a> {
                 }
                 v
             },
-            tags: BTreeMap::new(),
+            tags: HashMap::new(),
             plus_tags: Vec::new(),
             minus_tags: Vec::new(),
             replacements: Vec::new(),
@@ -178,7 +178,7 @@ impl<'a> Parser<'a> {
         if segment.is_empty() {
             return;
         }
-        if self.attempt_tag_create(segment) {
+        if self.attempt_tag_create(segment, line) {
             return;
         }
         if self.attempt_rules(segment, line) {
@@ -189,7 +189,7 @@ impl<'a> Parser<'a> {
                line);
     }
 
-    fn attempt_tag_create(&mut self, segment: &str) -> bool {
+    fn attempt_tag_create(&mut self, segment: &str, line: usize) -> bool {
         if let Some(caps) = self.config.tag_create.regex.as_ref().unwrap().captures(segment) {
             let s = caps.at(1).unwrap();
             if s.chars().all(|c| c == '+') {
@@ -205,11 +205,20 @@ impl<'a> Parser<'a> {
                     .map(|v| v.len())
                     .collect()));
             } else {
-                self.tags.insert(s.to_string(),
-                                 self.segments
-                                     .iter()
-                                     .map(|v| v.len())
-                                     .collect());
+                use std::collections::hash_map::Entry;
+                match self.tags.entry(s.to_string()) {
+                    Entry::Occupied(_) => {
+                        panic!("Attempted to create duplicate tag \"{}\" on line {}",
+                               s,
+                               line)
+                    }
+                    Entry::Vacant(v) => {
+                        v.insert(self.segments
+                            .iter()
+                            .map(|v| v.len())
+                            .collect());
+                    }
+                }
             }
             true
         } else {
