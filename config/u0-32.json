@@ -736,6 +736,231 @@
         }
       ]
     }, {
+      "regex_string": "^pfill:0b([0-1]+),0b([0-1]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:0b([0-1]+),(?:0h|0x)([0-9A-F]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:0b([0-1]+),([0-9]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:(?:0h|0x)([0-9A-F]+),0b([0-1]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:(?:0h|0x)([0-9A-F]+),(?:0h|0x)([0-9A-F]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:(?:0h|0x)([0-9A-F]+),([0-9]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:([0-9]+),0b([0-1]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:([0-9]+),(?:0h|0x)([0-9A-F]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pfill:([0-9]+),([0-9]+)$",
+      "segment_values": [[0],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 0
+              }
+            ]
+          }
+        }, {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 0,
+                "fill": true
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^palign:0b([0-1]+),0b([0-1]+)$",
       "segment_values": [[0],[]],
       "captures": [
