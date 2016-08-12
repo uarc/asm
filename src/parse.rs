@@ -222,8 +222,6 @@ impl<'a> Parser<'a> {
                     }
                 }
                 return true;
-            } else {
-                return false;
             }
         }
         false
@@ -275,9 +273,10 @@ impl<'a> Parser<'a> {
                         Capture::Num { ref feedbacks, ref base } => {
                             let pval = i64::from_str_radix(cap_string, *base).unwrap_or_else(|e| {
                                 panic!("Error: Failed to parse captured string \"{}\" from \
-                                        \"{}\": {}",
+                                        \"{}\" on line {}: {}",
                                        cap_string,
                                        segment,
+                                       line,
                                        e);
                             });
                             let val: u64 = unsafe { transmute(pval) };
