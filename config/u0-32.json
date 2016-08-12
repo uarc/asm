@@ -1,7 +1,7 @@
 {
   "segment_widths": [1, 4],
   "split_whitespace": true,
-  "tag_create": [
+  "tag_creates": [
     {"regex_string": "^:(.*)$"},
     {"regex_string": "^(\\++|-+)$"}
   ],
