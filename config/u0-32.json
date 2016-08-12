@@ -20,6 +20,51 @@
       "segment_values": [[148, 4],[]],
       "captures": []
     }, {
+      "regex_string": "^\\$0b([0-1]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 2,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^\\$(?:0h|0x)([0-9A-Fa-f]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 16,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^\\$([0-9]+)$",
+      "segment_values": [[],[0]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {
+                "segment": 1
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^\\$\\$(.*)$",
       "segment_values": [[],[0]],
       "captures": [

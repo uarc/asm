@@ -30,6 +30,8 @@ pub struct Parser<'a> {
     config: &'a Config,
     segments: Vec<Vec<u64>>,
     tags: BTreeMap<String, Vec<usize>>,
+    plus_tags: Vec<(usize, Vec<usize>)>,
+    minus_tags: Vec<(usize, Vec<usize>)>,
     replacements: Vec<Replacement>,
 }
 
@@ -53,21 +55,50 @@ impl<'a> Parser<'a> {
                 v
             },
             tags: BTreeMap::new(),
+            plus_tags: Vec::new(),
+            minus_tags: Vec::new(),
             replacements: Vec::new(),
         }
     }
 
     pub fn link(&mut self) {
         // Iterate through every replacement.
-        for r in &self.replacements {
-            // Get the tag offset vector corresponding to the replacement.
-            let tag = self.tags.get(&r.tag).unwrap_or_else(|| {
-                panic!("Error: Tag \"{}\" used on line {} never defined.",
-                       r.tag,
+        'outer: for r in &self.replacements {
+            if r.tag.chars().all(|c| c == '+') {
+                for e in &self.plus_tags {
+                    // Ensure they have the same amount of pluses and that the relevant segment is at least as high.
+                    if e.0 == r.tag.len() && e.1[r.add_segment] >= r.index {
+                        self.segments[r.add_segment][r.index] +=
+                            shift_left_or_right((e.1[r.pos_segment] as isize + r.pos_offset) as u64, r.shift);
+
+                        break 'outer;
+                    }
+                }
+                panic!("Error: Forward + tag used on line {} was never defined.",
                        r.line);
-            });
-            self.segments[r.add_segment][r.index] +=
-                shift_left_or_right((tag[r.pos_segment] as isize + r.pos_offset) as u64, r.shift);
+            } else if r.tag.chars().all(|c| c == '-') {
+                for e in self.minus_tags.iter().rev() {
+                    // Ensure they have the same amount of minuses and that the relevant segment is at least as low.
+                    if e.0 == r.tag.len() && e.1[r.add_segment] < r.index {
+                        self.segments[r.add_segment][r.index] +=
+                            shift_left_or_right((e.1[r.pos_segment] as isize + r.pos_offset) as u64, r.shift);
+
+                        break 'outer;
+                    }
+                }
+                panic!("Error: Forward + tag used on line {} was never defined.",
+                       r.line);
+            } else {
+                // Get the tag offset vector corresponding to the replacement.
+                let tag = self.tags.get(&r.tag).unwrap_or_else(|| {
+                    panic!("Error: Tag \"{}\" used on line {} never defined.",
+                           r.tag,
+                           r.line);
+                });
+                self.segments[r.add_segment][r.index] +=
+                    shift_left_or_right((tag[r.pos_segment] as isize + r.pos_offset) as u64,
+                                        r.shift);
+            }
         }
     }
 
@@ -160,11 +191,26 @@ impl<'a> Parser<'a> {
 
     fn attempt_tag_create(&mut self, segment: &str) -> bool {
         if let Some(caps) = self.config.tag_create.regex.as_ref().unwrap().captures(segment) {
-            self.tags.insert(caps.at(1).unwrap().to_string(),
-                             self.segments
-                                 .iter()
-                                 .map(|v| v.len())
-                                 .collect());
+            let s = caps.at(1).unwrap();
+            if s.chars().all(|c| c == '+') {
+                self.plus_tags.push((s.len(),
+                                     self.segments
+                    .iter()
+                    .map(|v| v.len())
+                    .collect()));
+            } else if s.chars().all(|c| c == '-') {
+                self.minus_tags.push((s.len(),
+                                      self.segments
+                    .iter()
+                    .map(|v| v.len())
+                    .collect()));
+            } else {
+                self.tags.insert(s.to_string(),
+                                 self.segments
+                                     .iter()
+                                     .map(|v| v.len())
+                                     .collect());
+            }
             true
         } else {
             false
