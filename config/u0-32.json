@@ -1529,11 +1529,11 @@
       ]
     }, {
       "regex_string": "^bra$",
-      "segment_values": [[26],[]],
+      "segment_values": [[29],[]],
       "captures": []
     }, {
       "regex_string": "^bra:(.*)$",
-      "segment_values": [[26, 0, 0],[]],
+      "segment_values": [[29, 0, 0],[]],
       "captures": [
         {
           "Tag": {
@@ -1557,8 +1557,36 @@
       ]
     }, {
       "regex_string": "^discard$",
-      "segment_values": [[27],[]],
+      "segment_values": [[30],[]],
       "captures": []
+    }, {
+      "regex_string": "^callri$",
+      "segment_values": [[31],[]],
+      "captures": []
+    }, {
+      "regex_string": "^callri:(.*)$",
+      "segment_values": [[31, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
     }, {
       "regex_string": "^cv([0-9A-Fa-f])$",
       "segment_values": [[32],[]],
