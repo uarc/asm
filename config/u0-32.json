@@ -3389,6 +3389,88 @@
       "segment_values": [[175],[]],
       "captures": []
     }, {
+      "regex_string": "^push([0-3])$",
+      "segment_values": [[176],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^pop([0-3])$",
+      "segment_values": [[180],[]],
+      "captures": [
+        {
+          "Num": {
+            "base": 10,
+            "feedbacks": [
+              {}
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^ba$",
+      "segment_values": [[184],[]],
+      "captures": []
+    }, {
+      "regex_string": "^ba:(.*)$",
+      "segment_values": [[184, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^bna$",
+      "segment_values": [[185],[]],
+      "captures": []
+    }, {
+      "regex_string": "^bna:(.*)$",
+      "segment_values": [[185, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
       "regex_string": "^nop$",
       "segment_values": [[192],[]],
       "captures": []
