@@ -71,22 +71,22 @@ impl<'a> Parser<'a> {
                         self.segments[r.add_segment][r.index] +=
                             shift_left_or_right((e.1[r.pos_segment] as isize + r.pos_offset) as u64, r.shift);
 
-                        break 'outer;
+                        continue 'outer;
                     }
                 }
                 panic!("Error: Forward + tag used on line {} was never defined.",
                        r.line);
             } else if r.tag.chars().all(|c| c == '-') {
                 for e in self.minus_tags.iter().rev() {
-                    // Ensure they have the same amount of minuses and that the relevant segment is at least as low.
+                    // Ensure they have the same amount of minuses and that the relevant segment is lower.
                     if e.0 == r.tag.len() && e.1[r.add_segment] < r.index {
                         self.segments[r.add_segment][r.index] +=
                             shift_left_or_right((e.1[r.pos_segment] as isize + r.pos_offset) as u64, r.shift);
 
-                        break 'outer;
+                        continue 'outer;
                     }
                 }
-                panic!("Error: Forward + tag used on line {} was never defined.",
+                panic!("Error: Backward - tag used on line {} was never defined.",
                        r.line);
             } else {
                 // Get the tag offset vector corresponding to the replacement.
