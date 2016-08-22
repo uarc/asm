@@ -1933,39 +1933,15 @@
       "segment_values": [[106],[]],
       "captures": []
     }, {
-      "regex_string": "^beq$",
+      "regex_string": "^writeps$",
       "segment_values": [[107],[]],
       "captures": []
     }, {
-      "regex_string": "^beq:(.*)$",
-      "segment_values": [[107, 0, 0],[]],
-      "captures": [
-        {
-          "Tag": {
-            "feedbacks": [
-              {
-                "from_segment": 0,
-                "relative": true,
-                "shift": 0,
-                "add_segment": 0,
-                "add_index": 1
-              }, {
-                "from_segment": 0,
-                "relative": true,
-                "shift": -8,
-                "add_segment": 0,
-                "add_index": 2
-              }
-            ]
-          }
-        }
-      ]
-    }, {
-      "regex_string": "^bne$",
+      "regex_string": "^beq$",
       "segment_values": [[108],[]],
       "captures": []
     }, {
-      "regex_string": "^bne:(.*)$",
+      "regex_string": "^beq:(.*)$",
       "segment_values": [[108, 0, 0],[]],
       "captures": [
         {
@@ -1989,11 +1965,11 @@
         }
       ]
     }, {
-      "regex_string": "^bles$",
+      "regex_string": "^bne$",
       "segment_values": [[109],[]],
       "captures": []
     }, {
-      "regex_string": "^bles:(.*)$",
+      "regex_string": "^bne:(.*)$",
       "segment_values": [[109, 0, 0],[]],
       "captures": [
         {
@@ -2017,11 +1993,11 @@
         }
       ]
     }, {
-      "regex_string": "^bleq$",
+      "regex_string": "^bles$",
       "segment_values": [[110],[]],
       "captures": []
     }, {
-      "regex_string": "^bleq:(.*)$",
+      "regex_string": "^bles:(.*)$",
       "segment_values": [[110, 0, 0],[]],
       "captures": [
         {
@@ -2045,11 +2021,11 @@
         }
       ]
     }, {
-      "regex_string": "^blesu$",
+      "regex_string": "^bleq$",
       "segment_values": [[111],[]],
       "captures": []
     }, {
-      "regex_string": "^blesu:(.*)$",
+      "regex_string": "^bleq:(.*)$",
       "segment_values": [[111, 0, 0],[]],
       "captures": [
         {
@@ -2073,11 +2049,11 @@
         }
       ]
     }, {
-      "regex_string": "^blequ$",
+      "regex_string": "^blesu$",
       "segment_values": [[112],[]],
       "captures": []
     }, {
-      "regex_string": "^blequ:(.*)$",
+      "regex_string": "^blesu:(.*)$",
       "segment_values": [[112, 0, 0],[]],
       "captures": [
         {
@@ -2101,44 +2077,72 @@
         }
       ]
     }, {
-      "regex_string": "^recv$",
+      "regex_string": "^blequ$",
       "segment_values": [[113],[]],
       "captures": []
     }, {
-      "regex_string": "^send$",
+      "regex_string": "^blequ:(.*)$",
+      "segment_values": [[113, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^recv$",
       "segment_values": [[114],[]],
       "captures": []
     }, {
-      "regex_string": "^incept$",
+      "regex_string": "^send$",
       "segment_values": [[115],[]],
       "captures": []
     }, {
-      "regex_string": "^set$",
+      "regex_string": "^incept$",
       "segment_values": [[116],[]],
       "captures": []
     }, {
-      "regex_string": "^sel$",
+      "regex_string": "^set$",
       "segment_values": [[117],[]],
       "captures": []
     }, {
-      "regex_string": "^setpa$",
+      "regex_string": "^sel$",
       "segment_values": [[118],[]],
       "captures": []
     }, {
-      "regex_string": "^expect$",
+      "regex_string": "^setpa$",
       "segment_values": [[119],[]],
       "captures": []
     }, {
-      "regex_string": "^sef$",
+      "regex_string": "^expect$",
       "segment_values": [[120],[]],
       "captures": []
     }, {
-      "regex_string": "^reset$",
+      "regex_string": "^sef$",
       "segment_values": [[121],[]],
       "captures": []
     }, {
-      "regex_string": "^ddrop$",
+      "regex_string": "^reset$",
       "segment_values": [[122],[]],
+      "captures": []
+    }, {
+      "regex_string": "^ddrop$",
+      "segment_values": [[123],[]],
       "captures": []
     }, {
       "regex_string": "^addi$",
@@ -3448,6 +3452,62 @@
       "captures": []
     }, {
       "regex_string": "^bna:(.*)$",
+      "segment_values": [[185, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^writepori$",
+      "segment_values": [[184],[]],
+      "captures": []
+    }, {
+      "regex_string": "^writepori:(.*)$",
+      "segment_values": [[184, 0, 0],[]],
+      "captures": [
+        {
+          "Tag": {
+            "feedbacks": [
+              {
+                "from_segment": 0,
+                "relative": true,
+                "shift": 0,
+                "add_segment": 0,
+                "add_index": 1
+              }, {
+                "from_segment": 0,
+                "relative": true,
+                "shift": -8,
+                "add_segment": 0,
+                "add_index": 2
+              }
+            ]
+          }
+        }
+      ]
+    }, {
+      "regex_string": "^writepsri$",
+      "segment_values": [[185],[]],
+      "captures": []
+    }, {
+      "regex_string": "^writepsri:(.*)$",
       "segment_values": [[185, 0, 0],[]],
       "captures": [
         {
