@@ -1209,7 +1209,7 @@
       ]
     }, {
       "regex_string": "^move([0-3]):0b(.*)$",
-      "segment_values": [[0, 0],[]],
+      "segment_values": [[0, 255],[]],
       "captures": [
         {
           "Num": {
@@ -1232,7 +1232,7 @@
       ]
     }, {
       "regex_string": "^move([0-3]):(?:0h|0x)(.*)$",
-      "segment_values": [[0, 0],[]],
+      "segment_values": [[0, 255],[]],
       "captures": [
         {
           "Num": {
@@ -1255,7 +1255,7 @@
       ]
     }, {
       "regex_string": "^move([0-3]):(.*)$",
-      "segment_values": [[0, 0],[]],
+      "segment_values": [[0, 255],[]],
       "captures": [
         {
           "Num": {
@@ -1615,7 +1615,7 @@
       ]
     }, {
       "regex_string": "^read([0-3]):(.*)$",
-      "segment_values": [[48, 0],[]],
+      "segment_values": [[48, 255],[]],
       "captures": [
         {
           "Num": {
@@ -1746,7 +1746,7 @@
       ]
     }, {
       "regex_string": "^writepst([0-3]):(.*)$",
-      "segment_values": [[68, 0],[]],
+      "segment_values": [[68, 255],[]],
       "captures": [
         {
           "Num": {
