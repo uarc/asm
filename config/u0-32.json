@@ -2145,6 +2145,14 @@
       "segment_values": [[123],[]],
       "captures": []
     }, {
+      "regex_string": "^sendp$",
+      "segment_values": [[124],[]],
+      "captures": []
+    }, {
+      "regex_string": "^inceptp$",
+      "segment_values": [[125],[]],
+      "captures": []
+    }, {
       "regex_string": "^addi$",
       "segment_values": [[128],[]],
       "captures": []
